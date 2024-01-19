@@ -33,3 +33,28 @@ body {
 .caroselImg {
   max-width: 40rem;
 }
+.popular,
+.about,
+.Recipes,
+.FAQs,
+footer {
+  margin-top: 150px;
+}
+.accordion-item {
+  border: none !important;
+}
+
+.accordion-header {
+  border-bottom: 1px solid #ddd !important;
+}
+.accordion-button:focus {
+  box-shadow: none !important;
+  border: none !important;
+}
+.accordion-button:not(.collapsed) {
+  background-color: #f7d7da !important;
+}
+.accordion-button {
+  font-family: "Nunito", sans-serif !important;
+  font-size: 1.2rem;
+}
