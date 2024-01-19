@@ -15,9 +15,11 @@
     <title>RecipeRover</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-md bg-body-tertiary fixed-top shadow py-3">
+    <nav class="navbar navbar-expand-md bg-body-tertiary fixed-top shadow py-2">
       <div class="container-fluid">
-        <a class="navbar-brand me-auto" href="#">RecipeRover</a>
+        <a class="navbar-brand me-auto fw-bold logo" href="#"
+          ><img src="img/logo_light_1_10 (1).webp" alt=""
+        /></a>
 
         <div
           class="offcanvas offcanvas-end"
@@ -37,20 +39,22 @@
             ></button>
           </div>
           <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+            <ul
+              class="navbar-nav navbar-nav-scroll justify-content-center gap-3 flex-grow-1 pe-3"
+            >
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" aria-current="page" href="#Home">Home</a>
               </li>
 
               <li class="nav-item dropdown">
                 <a
-                  class="nav-link active"
-                  href="#"
+                  class="nav-link"
+                  href="#Recipes"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Recipes
+                  Recipes <i class="fa-solid fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">Action</a></li>
@@ -62,14 +66,10 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"
-                  >About</a
-                >
+                <a class="nav-link" aria-current="page" href="#">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"
-                  >ContactUs</a
-                >
+                <a class="nav-link" aria-current="page" href="#">ContactUs</a>
               </li>
             </ul>
           </div>
@@ -99,6 +99,195 @@
         </button>
       </div>
     </nav>
+
+    <!-- ********************************** -->
+    <section class="Home" id="Home">
+      <div
+        id="carouselExampleAutoplaying"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div
+              class="d-flex flex-column flex-xl-row justify-content-between align-items-center container"
+            >
+              <div class="caroselDes order-last order-xl-first">
+                <h1 class="text-danger fw-bolder mx-1">Our Special Recipes</h1>
+                <h1 class="fw-bolder mx-1">Pepperoni Pizza 🍕</h1>
+                <p class="text-secondary fs-5 mx-1">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Adipisci in praesentium enim quibusdam eligendi nulla!
+                </p>
+                <button class="btn btn-danger rounded-5 py-3 px-4 fw-bold">
+                  Explore Our Recipes
+                </button>
+              </div>
+              <div class="caroselImg">
+                <img
+                  src="img/wepik-export-20240119142314bMUh (1).png"
+                  class="d-block w-100 border-3 border-danger"
+                  alt="..."
+                />
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div
+              class="d-flex justify-content-between align-items-center container flex-column flex-xl-row"
+            >
+              <div class="caroselDes order-last order-xl-first">
+                <h1 class="text-danger fw-bolder mx-1">Our Special Recipes</h1>
+                <h1 class="fw-bolder mx-1">Red Sauce Pasta 🍝</h1>
+                <p class="text-secondary fs-5 mx-1">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Adipisci in praesentium enim quibusdam eligendi nulla!
+                </p>
+                <button class="btn btn-danger rounded-5 py-3 px-4 fw-bold">
+                  Explore Our Recipes
+                </button>
+              </div>
+              <div class="caroselImg">
+                <img
+                  src="img/wepik-export-202401191426424J7l.png"
+                  class="d-block w-100 border-3 border-danger"
+                  alt="..."
+                />
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div
+              class="d-flex justify-content-between align-items-center container flex-column flex-xl-row"
+            >
+              <div class="caroselDes order-last order-xl-first">
+                <h1 class="text-danger fw-bolder mx-1">Our Special Recipes</h1>
+                <h1 class="fw-bolder mx-1">Grilled chicken 🍗</h1>
+                <p class="text-secondary fs-5 mx-1">
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Adipisci in praesentium enim quibusdam eligendi nulla!
+                </p>
+                <button class="btn btn-danger rounded-5 py-3 px-4 fw-bold">
+                  Explore Our Recipes
+                </button>
+              </div>
+              <div class="caroselImg">
+                <img
+                  src="img/wepik-export-202401191435021KGs.png"
+                  class="d-block w-100 border-3 border-danger"
+                  alt="..."
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+    <section class="Recipes mt-3" id="Recipes">
+      <div class="container">
+        <h3 class="fw-bold text-center text-danger fs">Our Recipes</h3>
+        <h2 class="fw-bold text-center fs-1">Our Popular Recipes</h2>
+        <!-- rowwwwwwwwwws -->
+        <div class="row row-cols-3 row-cols-md-6 g-4">
+          <div class="col">
+            <div class="card">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>

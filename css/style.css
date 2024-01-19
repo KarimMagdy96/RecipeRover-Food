@@ -5,6 +5,7 @@
 }
 body {
   font-family: "Nunito", sans-serif;
+  height: 3000px;
 }
 .navbar-toggler {
   border: none !important;
@@ -14,6 +15,22 @@ body {
   box-shadow: none !important;
 }
 .navbtn {
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.logo img {
+  max-width: 7.5rem;
+}
+.navbar-nav {
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+}
+.carousel-item {
+}
+.Home {
+  margin-top: 6rem;
+}
+.caroselImg {
+  max-width: 40rem;
 }
