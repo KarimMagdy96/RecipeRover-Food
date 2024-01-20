@@ -1,25 +1,32 @@
 var searchQueries = Array.from(document.querySelectorAll(".searchQuerie"));
 var titleHolder = document.getElementById("titleHolder");
-var searchQuerieCard = Array.from(
-  document.querySelectorAll(".searchQuerieCard")
+var recipesTitle = Array.from(document.querySelectorAll(".recipesTitle"));
+var recipesSourse = Array.from(document.querySelectorAll(".recipesSourse"));
+var recipesDetailsBtn = Array.from(
+  document.querySelectorAll(".recipesDetailsBtn")
 );
 var searchQuerieCard = Array.from(
   document.querySelectorAll(".searchQuerieCard")
 );
-
+var searchQuerieCard = Array.from(
+  document.querySelectorAll(".searchQuerieCard")
+);
 var recipesImg = Array.from(document.querySelectorAll(".recipesImg"));
-var recipeName = "Pizza";
+
+getRecipes("pizza");
+
 for (var i = 0; i < searchQueries.length; i++) {
   searchQueries[i].addEventListener("click", function (e) {
+    titleHolder.innerHTML = e.target.innerHTML;
     getRecipes(e.target.innerHTML);
   });
 }
 
 for (var r = 0; r < searchQuerieCard.length; r++) {
   searchQuerieCard[r].addEventListener("click", function (e) {
-    console.log(e.target.closest("div").innerText);
     if (e.target.closest("div").innerText != null) {
       getRecipes(e.target.closest("div").innerText);
+      titleHolder.innerHTML = e.target.closest("div").innerText;
     }
   });
 }
@@ -32,11 +39,13 @@ async function getRecipes(category) {
   var Recipes = await response.json();
   displayRecipes(Recipes.recipes);
 }
-// display recipes
 
+// display recipes
 function displayRecipes(Recipes) {
   for (var i = 0; i < Recipes.length; i++) {
     recipesImg[i].src = Recipes[i].image_url;
+    recipesTitle[i].innerHTML = Recipes[i].title;
     recipesImg[i].alt = Recipes[i].title;
+    recipesSourse[i].href = Recipes[i].source_url;
   }
 }
