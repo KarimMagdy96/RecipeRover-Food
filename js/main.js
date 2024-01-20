@@ -12,6 +12,7 @@ var searchQuerieCard = Array.from(
   document.querySelectorAll(".searchQuerieCard")
 );
 var recipesImg = Array.from(document.querySelectorAll(".recipesImg"));
+var Recipeslist;
 // *******************************************************************************
 
 getRecipes("pizza");
@@ -26,19 +27,23 @@ for (var i = 0; i < searchQueries.length; i++) {
 for (var r = 0; r < searchQuerieCard.length; r++) {
   searchQuerieCard[r].addEventListener("click", function (e) {
     if (e.target.closest("div").innerText != null) {
-      getRecipes(e.target.closest("div").innerText);
+      start(e.target.closest("div").innerText);
       titleHolder.innerHTML = e.target.closest("div").innerText;
     }
   });
 }
-
+// start all
+async function start(category) {
+  await getRecipes(category);
+  displayRecipes(Recipeslist);
+}
 // get all recipes
 async function getRecipes(category) {
   var response = await fetch(
     `https://forkify-api.herokuapp.com/api/search?q=${category}`
   );
   var Recipes = await response.json();
-  displayRecipes(Recipes.recipes);
+  Recipeslist = Recipes.recipes;
 }
 
 // display recipes
