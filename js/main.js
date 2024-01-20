@@ -17,8 +17,9 @@ for (var i = 0; i < searchQueries.length; i++) {
 
 for (var r = 0; r < searchQuerieCard.length; r++) {
   searchQuerieCard[r].addEventListener("click", function (e) {
-    if (e.target.nextElementSibling.innerText != null) {
-      getRecipes(e.target.nextElementSibling.innerText);
+    console.log(e.target.closest("div").innerText);
+    if (e.target.closest("div").innerText != null) {
+      getRecipes(e.target.closest("div").innerText);
     }
   });
 }
