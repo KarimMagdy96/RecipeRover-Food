@@ -14,7 +14,7 @@ var searchQuerieCard = Array.from(
 var recipesImg = Array.from(document.querySelectorAll(".recipesImg"));
 var Recipeslist;
 // *******************************************************************************
-
+// start whe site loads
 start("pizza");
 // add click event
 for (var i = 0; i < searchQueries.length; i++) {
