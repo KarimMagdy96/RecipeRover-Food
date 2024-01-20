@@ -12,16 +12,17 @@ var searchQuerieCard = Array.from(
   document.querySelectorAll(".searchQuerieCard")
 );
 var recipesImg = Array.from(document.querySelectorAll(".recipesImg"));
+// *******************************************************************************
 
 getRecipes("pizza");
-
+// add click event
 for (var i = 0; i < searchQueries.length; i++) {
   searchQueries[i].addEventListener("click", function (e) {
     titleHolder.innerHTML = e.target.innerHTML;
     getRecipes(e.target.innerHTML);
   });
 }
-
+// add click event
 for (var r = 0; r < searchQuerieCard.length; r++) {
   searchQuerieCard[r].addEventListener("click", function (e) {
     if (e.target.closest("div").innerText != null) {
