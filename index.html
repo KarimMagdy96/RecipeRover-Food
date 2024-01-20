@@ -57,19 +57,19 @@
                   Recipes <i class="fa-solid fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Salad</a></li>
-                  <li><a class="dropdown-item" href="#">Kebab</a></li>
-                  <li><a class="dropdown-item" href="#">Sweat Potato</a></li>
-                  <li><a class="dropdown-item" href="#">Masala</a></li>
-                  <li><a class="dropdown-item" href="#">Fish</a></li>
-                  <li><a class="dropdown-item" href="#">Tacos</a></li>
-                  <li><a class="dropdown-item" href="#">Rendang</a></li>
-                  <li><a class="dropdown-item" href="#">Humburger</a></li>
-                  <li><a class="dropdown-item" href="#">Pasta</a></li>
-                  <li><a class="dropdown-item" href="#">Pizza</a></li>
-                  <li><a class="dropdown-item" href="#">Ice Cream</a></li>
+                  <li><a class="dropdown-item searchQuerie" href="#">Salad</a></li>
+                  <li><a class="dropdown-item searchQuerie" href="#">Kebab</a></li>
+                  <li><a class="dropdown-item searchQuerie" href="#">Sweat Potato</a></li>
+                  <li><a class="dropdown-item searchQuerie" href="#">Masala</a></li>
+                  <li><a class="dropdown-item searchQuerie" href="#">Fish</a></li>
+                  <li><a class="dropdown-item searchQuerie" href="#">Tacos</a></li>
+                  <li><a class="dropdown-item searchQuerie" href="#">Rendang</a></li>
+                  <li><a class="dropdown-item searchQuerie" href="#">Humburger</a></li>
+                  <li><a class="dropdown-item searchQuerie" href="#">Pasta</a></li>
+                  <li><a class="dropdown-item searchQuerie" href="#">Pizza</a></li>
+                  <li><a class="dropdown-item searchQuerie" href="#">Ice Cream</a></li>
                   <li>
-                    <a class="dropdown-item" href="#">Popcorn</a>
+                    <a class="dropdown-item searchQuerie" href="#">Popcorn</a>
                   </li>
                 </ul>
               </li>
@@ -234,7 +234,7 @@
                   alt="..."
                 />
                 <div class="card-body">
-                  <h5 class="card-title">Kebab</h5>
+                  <h5 class="card-title searchQuerie">Kebab</h5>
                 </div>
               </div>
             </a>
@@ -248,7 +248,7 @@
                   alt="..."
                 />
                 <div class="card-body">
-                  <h5 class="card-title">Sweat Potato</h5>
+                  <h5 class="card-title searchQuerie">Sweat Potato</h5>
                 </div>
               </div>
             </a>
@@ -262,7 +262,7 @@
                   alt="..."
                 />
                 <div class="card-body">
-                  <h5 class="card-title">Masala</h5>
+                  <h5 class="card-title searchQuerie">Masala</h5>
                 </div>
               </div>
             </a>
@@ -276,7 +276,7 @@
                   alt="..."
                 />
                 <div class="card-body">
-                  <h5 class="card-title">Fish</h5>
+                  <h5 class="card-title searchQuerie">Fish</h5>
                 </div>
               </div>
             </a>
@@ -290,7 +290,7 @@
                   alt="..."
                 />
                 <div class="card-body">
-                  <h5 class="card-title">Tacos</h5>
+                  <h5 class="card-title searchQuerie">Tacos</h5>
                 </div>
               </div>
             </a>
@@ -304,7 +304,7 @@
                   alt="..."
                 />
                 <div class="card-body">
-                  <h5 class="card-title">Rendang</h5>
+                  <h5 class="card-title searchQuerie">Rendang</h5>
                 </div>
               </div>
             </a>
@@ -318,7 +318,7 @@
                   alt="..."
                 />
                 <div class="card-body">
-                  <h5 class="card-title">Salad</h5>
+                  <h5 class="card-title searchQuerie">Salad</h5>
                 </div>
               </div>
             </a>
@@ -332,7 +332,7 @@
                   alt="..."
                 />
                 <div class="card-body">
-                  <h5 class="card-title">Hamburger</h5>
+                  <h5 class="card-title searchQuerie">Hamburger</h5>
                 </div>
               </div>
             </a>
@@ -346,7 +346,7 @@
                   alt="..."
                 />
                 <div class="card-body">
-                  <h5 class="card-title">Pasta</h5>
+                  <h5 class="card-title searchQuerie">Pasta</h5>
                 </div>
               </div>
             </a>
@@ -360,7 +360,7 @@
                   alt="..."
                 />
                 <div class="card-body">
-                  <h5 class="card-title">Pizza</h5>
+                  <h5 class="card-title searchQuerie">Pizza</h5>
                 </div>
               </div>
             </a>
@@ -374,7 +374,7 @@
                   alt="..."
                 />
                 <div class="card-body">
-                  <h5 class="card-title">Ice Cream</h5>
+                  <h5 class="card-title searchQuerie">Ice Cream</h5>
                 </div>
               </div>
             </a>
@@ -388,7 +388,7 @@
                   alt="..."
                 />
                 <div class="card-body">
-                  <h5 class="card-title">Popcorn</h5>
+                  <h5 class="card-titl searchQuerie">Popcorn</h5>
                 </div>
               </div>
             </a>
@@ -401,7 +401,7 @@
       <div class="container">
         <h2 class="fw-bold text-center fs-1 mt-2 mb-5">
           Popular Recipes for
-          <spa class="fw-bold text-danger text-capitalize">Pizza</spa>
+          <span class="fw-bold text-danger text-capitalize " id="titleHolder">Pizza</span>
         </h2>
         <div class="row row-cols-2 row-cols-md-4 g-4">
           <div class="col">
@@ -411,7 +411,7 @@
               >
                 <img
                   src="img/pizza.jpg"
-                  class="card-img-top rounded-circle w-75"
+                  class="card-img-top rounded-circle w-75 recipesImg "
                   alt="..."
                 />
               </div>
@@ -435,7 +435,7 @@
               >
                 <img
                   src="img/pizza.jpg"
-                  class="card-img-top rounded-circle w-75"
+                  class="card-img-top rounded-circle w-75 recipesImg "
                   alt="..."
                 />
               </div>
@@ -459,7 +459,7 @@
               >
                 <img
                   src="img/pizza.jpg"
-                  class="card-img-top rounded-circle w-75"
+                  class="card-img-top rounded-circle w-75 recipesImg"
                   alt="..."
                 />
               </div>
@@ -483,7 +483,7 @@
               >
                 <img
                   src="img/pizza.jpg"
-                  class="card-img-top rounded-circle w-75"
+                  class="card-img-top rounded-circle w-75 recipesImg"
                   alt="..."
                 />
               </div>
@@ -509,7 +509,7 @@
               >
                 <img
                   src="img/pizza.jpg"
-                  class="card-img-top rounded-circle w-75"
+                  class="card-img-top rounded-circle w-75 recipesImg"
                   alt="..."
                 />
               </div>
@@ -535,7 +535,7 @@
               >
                 <img
                   src="img/pizza.jpg"
-                  class="card-img-top rounded-circle w-75"
+                  class="card-img-top rounded-circle w-75 recipesImg"
                   alt="..."
                 />
               </div>
@@ -559,7 +559,7 @@
               >
                 <img
                   src="img/pizza.jpg"
-                  class="card-img-top rounded-circle w-75"
+                  class="card-img-top rounded-circle w-75 recipesImg"
                   alt="..."
                 />
               </div>
@@ -583,7 +583,7 @@
               >
                 <img
                   src="img/pizza.jpg"
-                  class="card-img-top rounded-circle w-75"
+                  class="card-img-top rounded-circle w-75 recipesImg"
                   alt="..."
                 />
               </div>
