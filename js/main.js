@@ -15,7 +15,7 @@ var recipesImg = Array.from(document.querySelectorAll(".recipesImg"));
 var Recipeslist;
 // *******************************************************************************
 
-getRecipes("pizza");
+start("pizza");
 // add click event
 for (var i = 0; i < searchQueries.length; i++) {
   searchQueries[i].addEventListener("click", function (e) {
@@ -37,6 +37,7 @@ async function start(category) {
   await getRecipes(category);
   displayRecipes(Recipeslist);
 }
+
 // get all recipes
 async function getRecipes(category) {
   var response = await fetch(
