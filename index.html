@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="img/logoDark .jpg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,7 +15,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <title>RecipeRover</title>
   </head>
-  <body>
+  <body class="overflow-hidden" id="bodyVisable">
     <nav class="navbar navbar-expand-md bg-body-tertiary fixed-top shadow py-2">
       <div class="container-fluid">
         <a class="navbar-brand me-auto fw-bold logo" href="#"
@@ -84,13 +85,15 @@
         </div>
         <a
           href="#"
-          class="btn user rounded-circle bg-body-secondary me-2 d-flex justify-content-center align-items-center p-3 navbtn"
+          class="btn user rounded-circle bg-body-secondary me-2 d-flex justify-content-center align-items-center p-3 navbtn" 
+         
         >
           <i class="fa-regular fa-heart d-inline-block fa-fw"></i>
         </a>
         <a
           href="#"
           class="btn user rounded-circle bg-body-secondary d-flex justify-content-center align-items-center p-3 navbtn me-2"
+          data-bs-toggle="modal" data-bs-target="#staticBackdrop"
         >
           <i class="fa-regular fa-user d-inline-block fa-fw"></i>
         </a>
@@ -107,7 +110,29 @@
         </button>
       </div>
     </nav>
-
+<!-- ------------------- -->
+<!-- Modal -->
+<div class="modal fade shadow" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content  rounded-4 p-3">
+      <div class=" d-flex justify-content-end">
+        <button data-bs-dismiss="modal" aria-label="Close" class="btn bg-danger-subtle "><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="regForm px-5">
+        <label for="User" class="d-block mb-1 text-secondary fw-bold">User name</label>
+        <input type="text" id="user" class="form-control py-2" placeholder=" Try * user" />
+        <label for="email" class="text-secondary mt-3 mb-1 fw-bold" >Email</label>
+        <input type="email" class="form-control py-2" placeholder="Try * e@mail.com">
+        <label for="password" class="text-secondary mt-3 mb-1 fw-bold" >Password</label>
+        <input type="password" class="form-control py-2" placeholder="Try * 1234">
+        <button class="btn btn-outline-danger py-2 px-5 text-center fw-bold w-100 mt-4 d-block m-auto mb-2">SIGN UP</button>
+      </div>
+      <div class=" text-secondary py-3 px-5 fw-bold">
+        Already A user ?<a href="#" class="text-decoration-none ms-2">Login</a> 
+      </div>
+    </div>
+  </div>
+</div>  
     <!-- ********************************** -->
     <section class="Home overflow-hidden" id="Home">
       <div
@@ -779,8 +804,10 @@
         <div class="text-center py-2 fw-bold">made with 💕 by Karim.</div>
       </div>
     </footer>
-    <div class=" bg-danger-subtle position-fixed top-0 bottom-0 start-0 end-0 loadscreen d-flex justify-content-center align-items-center">
+    <div id="loadscreen" class=" bg-danger-subtle position-fixed top-0 bottom-0 start-0 end-0 loadscreen d-flex justify-content-center align-items-center ">
     <div class="loader"></div>
+    </div>
+    <div>
     </div>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>

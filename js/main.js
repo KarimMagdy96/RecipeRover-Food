@@ -2,6 +2,8 @@ var searchQueries = Array.from(document.querySelectorAll(".searchQuerie"));
 var titleHolder = document.getElementById("titleHolder");
 var recipesTitle = Array.from(document.querySelectorAll(".recipesTitle"));
 var recipesSourse = Array.from(document.querySelectorAll(".recipesSourse"));
+var loadscreen = document.getElementById("loadscreen");
+var bodyVisable = document.getElementById("bodyVisable");
 var recipesDetailsBtn = Array.from(
   document.querySelectorAll(".recipesDetailsBtn")
 );
@@ -16,6 +18,7 @@ var Recipeslist;
 // *******************************************************************************
 // start whe site loads
 start("pizza");
+
 // add click event
 for (var i = 0; i < searchQueries.length; i++) {
   searchQueries[i].addEventListener("click", function (e) {
@@ -36,6 +39,7 @@ for (var r = 0; r < searchQuerieCard.length; r++) {
 async function start(category) {
   await getRecipes(category);
   displayRecipes(Recipeslist);
+  console.log("finised");
 }
 
 // get all recipes
@@ -45,6 +49,7 @@ async function getRecipes(category) {
   );
   var Recipes = await response.json();
   Recipeslist = Recipes.recipes;
+  fullyload();
 }
 
 // display recipes
@@ -55,4 +60,9 @@ function displayRecipes(Recipes) {
     recipesImg[i].alt = Recipes[i].title;
     recipesSourse[i].href = Recipes[i].source_url;
   }
+}
+
+function fullyload() {
+  loadscreen.classList.add("d-none");
+  bodyVisable.classList.remove("overflow-hidden");
 }

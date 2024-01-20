@@ -62,174 +62,95 @@ footer {
   width: 12.844rem;
   height: 12.844rem;
 }
-
+.modal-header {
+  padding: 10px 10px !important;
+  border: 0 !important;
+}
+.form-control:focus {
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border-color: black;
+  outline: 0;
+  box-shadow: none !important;
+}
 /* HTML: <div class="loader"></div> */
 .loadscreen {
   z-index: 9999;
 }
 .loader {
-  width: fit-content;
-  font-size: 17px;
-  font-family: monospace;
-  line-height: 1.4;
-
-  font-weight: bold;
-  padding: 30px 2px 50px;
-  background: linear-gradient(#000 0 0) 0 0/100% 100% content-box padding-box
-    no-repeat;
   position: relative;
-  overflow: hidden;
-  animation: l10-0 2s infinite cubic-bezier(1, 175, 0.5, 175);
+  width: 120px;
+  height: 14px;
+  border-radius: 0 0 15px 15px;
+  background-color: #3e494d;
+  box-shadow: 0 -1px 4px #5d6063 inset;
+  animation: panex 0.5s linear alternate infinite;
+  transform-origin: 170px 0;
+  z-index: 10;
+  perspective: 300px;
 }
 .loader::before {
-  content: "Loading";
-  display: inline-block;
-  animation: l10-2 2s infinite;
+  content: "";
+  position: absolute;
+  left: calc(100% - 2px);
+  top: 0;
+  z-index: -2;
+  height: 10px;
+  width: 70px;
+  border-radius: 0 4px 4px 0;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(#6c4924, #4b2d21),
+    linear-gradient(#4d5457 24px, transparent 0),
+    linear-gradient(#9f9e9e 24px, transparent 0);
+  background-size: 50px 10px, 4px 8px, 24px 4px;
+  background-position: right center, 17px center, 0px center;
 }
 .loader::after {
   content: "";
   position: absolute;
-  width: 34px;
-  height: 28px;
-  top: 110%;
-  left: calc(50% - 16px);
-  background: linear-gradient(
-        90deg,
-        #0000 12px,
-        #f92033 0 22px,
-        #0000 0 26px,
-        #fdc98d 0 32px,
-        #0000
-      )
-      bottom 26px left 50%,
-    linear-gradient(90deg, #0000 10px, #f92033 0 28px, #fdc98d 0 32px, #0000 0)
-      bottom 24px left 50%,
-    linear-gradient(
-        90deg,
-        #0000 10px,
-        #643700 0 16px,
-        #fdc98d 0 20px,
-        #000 0 22px,
-        #fdc98d 0 24px,
-        #000 0 26px,
-        #f92033 0 32px,
-        #0000 0
-      )
-      bottom 22px left 50%,
-    linear-gradient(
-        90deg,
-        #0000 8px,
-        #643700 0 10px,
-        #fdc98d 0 12px,
-        #643700 0 14px,
-        #fdc98d 0 20px,
-        #000 0 22px,
-        #fdc98d 0 28px,
-        #f92033 0 32px,
-        #0000 0
-      )
-      bottom 20px left 50%,
-    linear-gradient(
-        90deg,
-        #0000 8px,
-        #643700 0 10px,
-        #fdc98d 0 12px,
-        #643700 0 16px,
-        #fdc98d 0 22px,
-        #000 0 24px,
-        #fdc98d 0 30px,
-        #f92033 0 32px,
-        #0000 0
-      )
-      bottom 18px left 50%,
-    linear-gradient(
-        90deg,
-        #0000 8px,
-        #643700 0 12px,
-        #fdc98d 0 20px,
-        #000 0 28px,
-        #f92033 0 30px,
-        #0000 0
-      )
-      bottom 16px left 50%,
-    linear-gradient(90deg, #0000 12px, #fdc98d 0 26px, #f92033 0 30px, #0000 0)
-      bottom 14px left 50%,
-    linear-gradient(
-        90deg,
-        #fdc98d 6px,
-        #f92033 0 14px,
-        #222a87 0 16px,
-        #f92033 0 22px,
-        #222a87 0 24px,
-        #f92033 0 28px,
-        #0000 0 32px,
-        #643700 0
-      )
-      bottom 12px left 50%,
-    linear-gradient(
-        90deg,
-        #fdc98d 6px,
-        #f92033 0 16px,
-        #222a87 0 18px,
-        #f92033 0 24px,
-        #f92033 0 26px,
-        #0000 0 30px,
-        #643700 0
-      )
-      bottom 10px left 50%,
-    linear-gradient(
-        90deg,
-        #0000 10px,
-        #f92033 0 16px,
-        #222a87 0 24px,
-        #feee49 0 26px,
-        #222a87 0 30px,
-        #643700 0
-      )
-      bottom 8px left 50%,
-    linear-gradient(
-        90deg,
-        #0000 12px,
-        #222a87 0 18px,
-        #feee49 0 20px,
-        #222a87 0 30px,
-        #643700 0
-      )
-      bottom 6px left 50%,
-    linear-gradient(90deg, #0000 8px, #643700 0 12px, #222a87 0 30px, #643700 0)
-      bottom 4px left 50%,
-    linear-gradient(90deg, #0000 6px, #643700 0 14px, #222a87 0 26px, #0000 0)
-      bottom 2px left 50%,
-    linear-gradient(90deg, #0000 6px, #643700 0 10px, #0000 0) bottom 0px left
-      50%;
-  background-size: 34px 2px;
+  left: 50%;
+  top: 0;
+  z-index: -2;
+  transform: translate(-50%, -20px) rotate3d(75, -2, 3, 78deg);
+  width: 55px;
+  height: 53px;
+  background: #fff;
+  background-image: radial-gradient(circle 3px, #fff6 90%, transparent 10%),
+    radial-gradient(circle 12px, #ffc400 90%, transparent 10%),
+    radial-gradient(circle 12px, #ffae00 100%, transparent 0);
   background-repeat: no-repeat;
-  animation: inherit;
-  animation-name: l10-1;
+  background-position: -4px -6px, -2px -2px, -1px -1px;
+  box-shadow: -2px -3px #0002 inset, 0 0 4px #0003 inset;
+  border-radius: 47% 36% 50% 50% / 49% 45% 42% 44%;
+  animation: eggRst 1s ease-out infinite;
 }
-@keyframes l10-0 {
+
+@keyframes eggRst {
   0%,
-  30% {
-    background-position: 0 0px;
-  }
-  50%,
   100% {
-    background-position: 0 -0.1px;
+    transform: translate(-50%, -20px) rotate3d(90, 0, 0, 90deg);
+    opacity: 0;
+  }
+  10%,
+  90% {
+    transform: translate(-50%, -30px) rotate3d(90, 0, 0, 90deg);
+    opacity: 1;
+  }
+  25% {
+    transform: translate(-50%, -40px) rotate3d(85, 17, 2, 70deg);
+  }
+  75% {
+    transform: translate(-50%, -40px) rotate3d(75, -3, 2, 70deg);
+  }
+  50% {
+    transform: translate(-55%, -50px) rotate3d(75, -8, 3, 50deg);
   }
 }
-@keyframes l10-1 {
-  50%,
-  100% {
-    top: 109.5%;
+@keyframes panex {
+  0% {
+    transform: rotate(-5deg);
   }
-}
-@keyframes l10-2 {
-  0%,
-  30% {
-    transform: translateY(0);
-  }
-  80%,
   100% {
-    transform: translateY(-260%);
+    transform: rotate(10deg);
   }
 }
