@@ -137,7 +137,9 @@ password.addEventListener("keyup", function () {
   if (passwordRegex.test(password.value)) {
     password.classList.remove("is-invalid");
     password.classList.add("is-valid");
-    closeModal();
+    if (signBtn.innerText == `LOGIN`) {
+      closeModal();
+    }
   } else {
     password.classList.remove("is-valid");
     password.classList.add("is-invalid");
@@ -210,10 +212,6 @@ function loginguser() {
     }
   }
 }
-
-loginDoor.addEventListener("click", function () {
-  closeModal();
-});
 
 function closeModal() {
   signBtn.setAttribute("data-bs-dismiss", "modal");
