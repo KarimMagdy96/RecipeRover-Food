@@ -10,6 +10,7 @@ let loginDoor = document.getElementById("loginDoor");
 let close = document.getElementById("close");
 let userIcon = document.getElementById("userIcon");
 let mailLabel = document.getElementById("mailLabel");
+let modalbackdrop = document.querySelector(".modal-backdrop");
 let password = document.getElementById("password");
 let staticBackdrop = document.getElementById("staticBackdrop");
 let signBtn = document.getElementById("signBtn");
@@ -108,6 +109,8 @@ signBtn.addEventListener("click", function () {
     mail.classList.contains("d-none") &&
     RegisteredUserData != null
   ) {
+    signBtn.setAttribute("data-bs-dismiss", "modal");
+    signBtn.setAttribute("aria-label", "Close");
     loginguser();
   }
 });
@@ -206,8 +209,6 @@ function loginguser() {
     ) {
       userIcon.innerHTML = RegisteredUserData[i].user.charAt(0);
       userIcon.classList.add("Logged");
-      staticBackdrop.classList.remove("show");
-      staticBackdrop.style.display = "none";
     }
   }
 }
