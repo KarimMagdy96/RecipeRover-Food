@@ -91,6 +91,7 @@
           <i class="fa-regular fa-heart d-inline-block fa-fw"></i>
         </a>
         <a
+        id="userIcon"
           href="#"
           class="btn user rounded-circle bg-body-secondary d-flex justify-content-center align-items-center p-3 navbtn me-2"
           data-bs-toggle="modal" data-bs-target="#staticBackdrop"
@@ -118,17 +119,17 @@
       <div class=" d-flex justify-content-end pb-5">
         <button data-bs-dismiss="modal" aria-label="Close" class="btn bg-danger-subtle "><i class="fa-solid fa-xmark"></i></button>
       </div>
-      <div class="regForm container">
+      <div class="regForm container ">
         <label for="User" class="d-block mb-1 text-secondary fw-bold">User name</label>
-        <input type="text" id="user" class="form-control py-2" placeholder=" Try * user" />
-        <label for="email" class="text-secondary mt-3 mb-1 fw-bold" >Email</label>
-        <input type="email" class="form-control py-2" placeholder="Try * e@mail.com">
-        <label for="password" class="text-secondary mt-3 mb-1 fw-bold" >Password</label>
-        <input type="password" class="form-control py-2" placeholder="Try * 1234">
-        <button class="btn btn-outline-danger py-2 px-5 text-center fw-bold w-100 mt-4 d-block m-auto mb-2">SIGN UP</button>
+        <input id="user" type="text" id="user" class="form-control py-2" placeholder=" Try * user || 3 to 16 characters" />
+        <label id="mailLabel" for="email" class="text-secondary mt-3 mb-1 fw-bold" >Email</label>
+        <input id="mail" type="email" class="form-control py-2" placeholder="Try * e@mail.com || any valid Email">
+        <label  for="password" class="text-secondary mt-3 mb-1 fw-bold" >Password</label>
+        <input id="password" type="password" class="form-control py-2" placeholder="Try * 1234 || any password from 8 to 12 characters">
+        <button id="signBtn" class="btn btn-outline-danger py-2 px-5 text-center fw-bold w-100 mt-4 d-block m-auto mb-2">REGISTER</button>
       </div>
-      <div class=" text-secondary py-3 px-5 fw-bold">
-        Already A user ?<a href="#" class="text-decoration-none ms-2">Login</a> 
+      <div id="alreadyUser" class=" text-secondary py-3 px-5 fw-bold">
+        Already A user ?<button  id="loginDoor" class="text-decoration-none ms-2 bg-transparent border-0 fw-bold text-danger">Login</button> 
       </div>
     </div>
   </div>
@@ -249,7 +250,7 @@
           Best Recipes Ever Time
         </h2>
         <!-- rowwwwwwwwwws -->
-        <div class="row row-cols-3 row-cols-md-4 row-cols-lg-6 g-4">
+        <div class="row row-cols-3 row-cols-md-4 row-cols-lg-6 g-4" >
           <div class="col">
             <a href="#popularRes" class="text-decoration-none searchQuerieCard">
               
