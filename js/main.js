@@ -219,8 +219,5 @@ function closeModal() {
   signBtn.setAttribute("data-bs-dismiss", "modal");
   signBtn.setAttribute("aria-label", "Close");
 }
-/*
 
-  signBtn.setAttribute("data-bs-dismiss", "modal");
-    signBtn.setAttribute("aria-label", "Close");
-*/
+alert("hello");
