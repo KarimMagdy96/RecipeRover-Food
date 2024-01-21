@@ -1,46 +1,46 @@
-var searchQueries = Array.from(document.querySelectorAll(".searchQuerie"));
-var titleHolder = document.getElementById("titleHolder");
-var recipesTitle = Array.from(document.querySelectorAll(".recipesTitle"));
-var recipesSourse = Array.from(document.querySelectorAll(".recipesSourse"));
-var loadscreen = document.getElementById("loadscreen");
-var bodyVisable = document.getElementById("bodyVisable");
-var user = document.getElementById("user");
-var mail = document.getElementById("mail");
-var loginDoor = document.getElementById("loginDoor");
-var userIcon = document.getElementById("userIcon");
-var mailLabel = document.getElementById("mailLabel");
-var password = document.getElementById("password");
-var signBtn = document.getElementById("signBtn");
-var signUp = document.getElementById("signUp");
+let searchQueries = Array.from(document.querySelectorAll(".searchQuerie"));
+let titleHolder = document.getElementById("titleHolder");
+let recipesTitle = Array.from(document.querySelectorAll(".recipesTitle"));
+let recipesSourse = Array.from(document.querySelectorAll(".recipesSourse"));
+let loadscreen = document.getElementById("loadscreen");
+let bodyVisable = document.getElementById("bodyVisable");
+let user = document.getElementById("user");
+let mail = document.getElementById("mail");
+let loginDoor = document.getElementById("loginDoor");
+let close = document.getElementById("close");
+let userIcon = document.getElementById("userIcon");
+let mailLabel = document.getElementById("mailLabel");
+let password = document.getElementById("password");
+let staticBackdrop = document.getElementById("staticBackdrop");
+let signBtn = document.getElementById("signBtn");
+let signUp = document.getElementById("signUp");
 const usernameRegex = /^(user|[\w-]{3,16})$/;
 const emailRegex = /^(e@mail\.com|[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,})$/;
 const passwordRegex = /^(1234|\d{8,12})$/;
-var alreadyUser = document.getElementById("alreadyUser");
-var recipesDetailsBtn = Array.from(
+let alreadyUser = document.getElementById("alreadyUser");
+let recipesDetailsBtn = Array.from(
   document.querySelectorAll(".recipesDetailsBtn")
 );
-var searchQuerieCard = Array.from(
+
+let searchQuerieCard = Array.from(
   document.querySelectorAll(".searchQuerieCard")
 );
-var searchQuerieCard = Array.from(
-  document.querySelectorAll(".searchQuerieCard")
-);
-var recipesImg = Array.from(document.querySelectorAll(".recipesImg"));
-var Recipeslist;
+let recipesImg = Array.from(document.querySelectorAll(".recipesImg"));
+let Recipeslist;
 
 // *******************************************************************************
 // start whe site loads
 start("pizza");
 
 // add click event
-for (var i = 0; i < searchQueries.length; i++) {
+for (let i = 0; i < searchQueries.length; i++) {
   searchQueries[i].addEventListener("click", function (e) {
     titleHolder.innerHTML = e.target.innerHTML;
     getRecipes(e.target.innerHTML);
   });
 }
 // add click event
-for (var r = 0; r < searchQuerieCard.length; r++) {
+for (let r = 0; r < searchQuerieCard.length; r++) {
   searchQuerieCard[r].addEventListener("click", function (e) {
     if (e.target.closest("div").innerText != null) {
       start(e.target.closest("div").innerText);
@@ -57,17 +57,17 @@ async function start(category) {
 
 // get all recipes
 async function getRecipes(category) {
-  var response = await fetch(
+  let response = await fetch(
     `https://forkify-api.herokuapp.com/api/search?q=${category}`
   );
-  var Recipes = await response.json();
+  let Recipes = await response.json();
   Recipeslist = Recipes.recipes;
   fullyload();
 }
 
 // display recipes
 function displayRecipes(Recipes) {
-  for (var i = 0; i < Recipes.length; i++) {
+  for (let i = 0; i < Recipes.length; i++) {
     recipesImg[i].src = Recipes[i].image_url;
     recipesTitle[i].innerHTML = Recipes[i].title;
     recipesImg[i].alt = Recipes[i].title;
@@ -81,7 +81,14 @@ function fullyload() {
 }
 
 // sign up
-var RegisteredUserData = [];
+
+let RegisteredUserData = [];
+
+if (localStorage.getItem("userData") == null) {
+  RegisteredUserData = [];
+} else {
+  RegisteredUserData = JSON.parse(localStorage.getItem("userData"));
+}
 
 signBtn.addEventListener("click", function () {
   if (
@@ -94,6 +101,14 @@ signBtn.addEventListener("click", function () {
   ) {
     signUser();
     displayUserData();
+  } else if (
+    user.value != "" &&
+    password.value != "" &&
+    signBtn.innerHTML == `LOGIN` &&
+    mail.classList.contains("d-none") &&
+    RegisteredUserData != null
+  ) {
+    loginguser();
   }
 });
 //user validation
@@ -135,8 +150,11 @@ function signUser() {
       mail: mail.value,
       password: password.value,
     };
-    localStorage.setItem("userData", JSON.stringify(userData));
-    RegisteredUserData.push(JSON.parse(localStorage.getItem("userData")));
+    RegisteredUserData.push(userData);
+
+    localStorage.setItem("userData", JSON.stringify(RegisteredUserData));
+  } else {
+    alert("you are already registered");
   }
 }
 // login display
@@ -147,15 +165,6 @@ function displayUserData() {
   mailLabel.classList.add("d-none");
   signBtn.classList.add("btn-outline-success");
   signBtn.classList.remove("btn-outline-danger");
-  for (var i = 0; i < RegisteredUserData.length; i++) {
-    if (
-      RegisteredUserData[i].user == user.value &&
-      RegisteredUserData[i].password == password.value
-    ) {
-      userIcon.innerHTML = RegisteredUserData[i].user.charAt(0);
-      userIcon.classList.add("Logged");
-    }
-  }
 }
 
 //rest fORM FOR LOGIN
@@ -187,4 +196,18 @@ function restFormValues() {
   user.classList.remove("is-valid");
   password.classList.remove("is-valid");
   mail.classList.remove("is-valid");
+}
+
+function loginguser() {
+  for (let i = 0; i < RegisteredUserData.length; i++) {
+    if (
+      RegisteredUserData[i].user == user.value &&
+      RegisteredUserData[i].password == password.value
+    ) {
+      userIcon.innerHTML = RegisteredUserData[i].user.charAt(0);
+      userIcon.classList.add("Logged");
+      staticBackdrop.classList.remove("show");
+      staticBackdrop.style.display = "none";
+    }
+  }
 }
