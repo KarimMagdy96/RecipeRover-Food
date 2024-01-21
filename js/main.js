@@ -109,8 +109,6 @@ signBtn.addEventListener("click", function () {
     mail.classList.contains("d-none") &&
     RegisteredUserData != null
   ) {
-    signBtn.setAttribute("data-bs-dismiss", "modal");
-    signBtn.setAttribute("aria-label", "Close");
     loginguser();
   }
 });
@@ -139,6 +137,7 @@ password.addEventListener("keyup", function () {
   if (passwordRegex.test(password.value)) {
     password.classList.remove("is-invalid");
     password.classList.add("is-valid");
+    closeModal();
   } else {
     password.classList.remove("is-valid");
     password.classList.add("is-invalid");
@@ -154,10 +153,8 @@ function signUser() {
       password: password.value,
     };
     RegisteredUserData.push(userData);
-
     localStorage.setItem("userData", JSON.stringify(RegisteredUserData));
   } else {
-    alert("you are already registered");
   }
 }
 // login display
@@ -209,6 +206,21 @@ function loginguser() {
     ) {
       userIcon.innerHTML = RegisteredUserData[i].user.charAt(0);
       userIcon.classList.add("Logged");
+      restFormValues();
     }
   }
 }
+
+loginDoor.addEventListener("click", function () {
+  closeModal();
+});
+
+function closeModal() {
+  signBtn.setAttribute("data-bs-dismiss", "modal");
+  signBtn.setAttribute("aria-label", "Close");
+}
+/*
+
+  signBtn.setAttribute("data-bs-dismiss", "modal");
+    signBtn.setAttribute("aria-label", "Close");
+*/
