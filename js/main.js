@@ -240,3 +240,9 @@ function openmodel() {
   signBtn.removeAttribute("data-bs-dismiss");
   signBtn.removeAttribute("aria-label");
 }
+
+userIcon.addEventListener("click", function () {
+  if (userIcon.classList.contains("Logged")) {
+    openmodel();
+  }
+});
