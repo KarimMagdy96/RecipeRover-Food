@@ -184,7 +184,7 @@ function alreadyRegistered() {
     alreadyUser.innerHTML = `Don't have account?  <button   id="signUp" class="text-decoration-none ms-2 bg-transparent border-0 fw-bold text-danger">Sign Up</button>`;
     restFormValues();
   } else {
-    alreadyUser.innerHTML = `Already have account?  <button   id="signUp" class="text-decoration-none ms-2 bg-transparent border-0 fw-bold text-danger">Sign In</button>`;
+    alreadyUser.innerHTML = `Already have accounte?  <button   id="signUp" class="text-decoration-none ms-2 bg-transparent border-0 fw-bold text-danger">Sign In</button>`;
     restFormValues();
   }
 }
