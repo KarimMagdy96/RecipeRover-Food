@@ -28,7 +28,7 @@ let searchQuerieCard = Array.from(
 );
 let recipesImg = Array.from(document.querySelectorAll(".recipesImg"));
 let Recipeslist;
-
+var loginform;
 // *******************************************************************************
 // start whe site loads
 start("pizza");
@@ -102,6 +102,7 @@ signBtn.addEventListener("click", function () {
   ) {
     signUser();
     displayUserData();
+    loginform = true;
   } else if (
     user.value != "" &&
     password.value != "" &&
@@ -137,9 +138,6 @@ password.addEventListener("keyup", function () {
   if (passwordRegex.test(password.value)) {
     password.classList.remove("is-invalid");
     password.classList.add("is-valid");
-    if (signBtn.innerText == `LOGIN`) {
-      closeModal();
-    }
   } else {
     password.classList.remove("is-valid");
     password.classList.add("is-invalid");
@@ -156,17 +154,17 @@ function signUser() {
     };
     RegisteredUserData.push(userData);
     localStorage.setItem("userData", JSON.stringify(RegisteredUserData));
-  } else {
   }
 }
 // login display
 function displayUserData() {
-  signBtn.innerHTML = `SIGN IN`;
+  signBtn.innerHTML = `LOGIN`;
   mail.classList.add("d-none");
   alreadyUser.innerHTML = `Don't have account?  <button   id="signUp" class="text-decoration-none ms-2 bg-transparent border-0 fw-bold text-danger">Sign Up</button>`;
   mailLabel.classList.add("d-none");
   signBtn.classList.add("btn-outline-success");
   signBtn.classList.remove("btn-outline-danger");
+  restFormValues();
 }
 
 //rest fORM FOR LOGIN
@@ -186,8 +184,13 @@ function alreadyRegistered() {
     alreadyUser.innerHTML = `Don't have account?  <button   id="signUp" class="text-decoration-none ms-2 bg-transparent border-0 fw-bold text-danger">Sign Up</button>`;
     restFormValues();
   } else {
-    alreadyUser.innerHTML = `Already have accounte?  <button   id="signUp" class="text-decoration-none ms-2 bg-transparent border-0 fw-bold text-danger">Sign In</button>`;
+    alreadyUser.innerHTML = `Already have accounte?  <button   id="signUp" class="text-decoration-none ms-2 bg-transparent border-0 fw-bold text-danger">Login</button>`;
     restFormValues();
+  }
+  if (signBtn.classList.contains("btn-outline-success")) {
+    loginform = true;
+  } else if (signBtn.classList.contains("btn-outline-danger")) {
+    loginform = false;
   }
 }
 //rest form values
@@ -209,6 +212,8 @@ function loginguser() {
       userIcon.innerHTML = RegisteredUserData[i].user.charAt(0);
       userIcon.classList.add("Logged");
       restFormValues();
+      loginform = true;
+      alreadyRegistered();
     }
   }
 }
@@ -216,4 +221,22 @@ function loginguser() {
 function closeModal() {
   signBtn.setAttribute("data-bs-dismiss", "modal");
   signBtn.setAttribute("aria-label", "Close");
+}
+
+function closelogin() {
+  if (
+    loginform &&
+    password.classList.contains("is-valid") &&
+    user.classList.contains("is-valid") &&
+    signBtn.classList.contains("btn-outline-success")
+  ) {
+    closeModal();
+  }
+}
+user.addEventListener("keyup", closelogin);
+password.addEventListener("keyup", closelogin);
+
+function openmodel() {
+  signBtn.removeAttribute("data-bs-dismiss");
+  signBtn.removeAttribute("aria-label");
 }
