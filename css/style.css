@@ -81,6 +81,9 @@ footer {
 .modal-content {
   min-height: 90vh !important;
 }
+.modelImg {
+  height: 300px;
+}
 .resipeDetales {
   width: 100vw !important;
 }
