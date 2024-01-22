@@ -66,9 +66,9 @@ async function getRecipes(category) {
   Recipeslist = Recipes.recipes;
   fullyload();
 }
-
 // display recipes
 function displayRecipes(Recipes) {
+  console.log(Recipes);
   for (let i = 0; i < Recipes.length; i++) {
     recipesImg[i].src = Recipes[i].image_url;
     recipesTitle[i].innerHTML = Recipes[i].title;
@@ -261,27 +261,3 @@ userIcon.addEventListener("click", function () {
     openmodel();
   }
 });
-
-/*
-
-
-for (let i = 0; i < RegisteredUserData.length; i++) {
-    if (
-      RegisteredUserData[i].user == user.value &&
-      RegisteredUserData[i].password == password.value
-    ) {
-      userIcon.innerHTML = RegisteredUserData[i].user.charAt(0);
-      userIcon.classList.add("Logged");
-      massage.classList.add("d-none");
-      restFormValues();
-      loginform = true;
-      alreadyRegistered();
-    } else {
-      restFormValues();
-      alreadyRegistered();
-      massage.classList.remove("d-none");
-      massage.innerHTML = `Invalid username or password`;
-    }
-  }
-
-*/
