@@ -217,9 +217,6 @@ function loginguser() {
       loginform = true;
       alreadyRegistered();
     } else {
-      restFormValues();
-      loginform = false;
-      alreadyRegistered();
       massage.classList.remove("d-none");
       massage.innerHTML = `Invalid username or password`;
     }
@@ -232,17 +229,27 @@ function closeModal() {
 }
 
 function closelogin() {
-  if (
-    loginform &&
-    password.classList.contains("is-valid") &&
-    user.classList.contains("is-valid") &&
-    signBtn.classList.contains("btn-outline-success")
-  ) {
-    closeModal();
+  for (let i = 0; i < RegisteredUserData.length; i++) {
+    if (
+      RegisteredUserData[i].user == user.value &&
+      RegisteredUserData[i].password == password.value &&
+      loginform &&
+      password.classList.contains("is-valid") &&
+      user.classList.contains("is-valid") &&
+      signBtn.classList.contains("btn-outline-success")
+    ) {
+      closeModal();
+    }
   }
 }
-user.addEventListener("keyup", closelogin);
-password.addEventListener("keyup", closelogin);
+user.addEventListener("keyup", function () {
+  closelogin();
+  massage.classList.add("d-none");
+});
+password.addEventListener("keyup", function () {
+  closelogin();
+  massage.classList.add("d-none");
+});
 
 function openmodel() {
   signBtn.removeAttribute("data-bs-dismiss");
@@ -254,3 +261,27 @@ userIcon.addEventListener("click", function () {
     openmodel();
   }
 });
+
+/*
+
+
+for (let i = 0; i < RegisteredUserData.length; i++) {
+    if (
+      RegisteredUserData[i].user == user.value &&
+      RegisteredUserData[i].password == password.value
+    ) {
+      userIcon.innerHTML = RegisteredUserData[i].user.charAt(0);
+      userIcon.classList.add("Logged");
+      massage.classList.add("d-none");
+      restFormValues();
+      loginform = true;
+      alreadyRegistered();
+    } else {
+      restFormValues();
+      alreadyRegistered();
+      massage.classList.remove("d-none");
+      massage.innerHTML = `Invalid username or password`;
+    }
+  }
+
+*/
