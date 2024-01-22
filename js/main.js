@@ -214,6 +214,7 @@ function loginguser() {
       restFormValues();
       loginform = true;
       alreadyRegistered();
+    } else {
     }
   }
 }
