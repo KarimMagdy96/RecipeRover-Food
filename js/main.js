@@ -8,11 +8,13 @@ let user = document.getElementById("user");
 let mail = document.getElementById("mail");
 let loginDoor = document.getElementById("loginDoor");
 let close = document.getElementById("close");
+let recipesMenu = document.getElementById("recipesMenu");
 let userIcon = document.getElementById("userIcon");
 let massage = document.getElementById("massage");
 let mailLabel = document.getElementById("mailLabel");
 let modalbackdrop = document.querySelector(".modal-backdrop");
 let password = document.getElementById("password");
+let details = Array.from(document.getElementsByClassName("details"));
 let staticBackdrop = document.getElementById("staticBackdrop");
 let signBtn = document.getElementById("signBtn");
 let signUp = document.getElementById("signUp");
@@ -54,7 +56,7 @@ for (let r = 0; r < searchQuerieCard.length; r++) {
 async function start(category) {
   await getRecipes(category);
   displayRecipes(Recipeslist);
-  console.log("finised");
+  getDetails(category);
 }
 
 // get all recipes
@@ -68,13 +70,44 @@ async function getRecipes(category) {
 }
 // display recipes
 function displayRecipes(Recipes) {
-  console.log(Recipes);
+  let cols = ``;
+
   for (let i = 0; i < Recipes.length; i++) {
-    recipesImg[i].src = Recipes[i].image_url;
-    recipesTitle[i].innerHTML = Recipes[i].title;
-    recipesImg[i].alt = Recipes[i].title;
-    recipesSourse[i].href = Recipes[i].source_url;
+    cols += `
+    <div class="col">
+    <div class="card h-100 border-0 shadow rounded-4 border-0">
+      <div
+        class="popCardImg bg-danger-subtle p-3 d-flex justify-content-center align-items-center rounded-4"
+      >
+        <img
+          src=${Recipes[i].image_url}
+          class="card-img-top rounded-circle img-fluid recipesImg "
+          alt="..."
+        />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title fs-6 fw-semibold  recipesTitle">${Recipes[i].title}</h5>
+        <div class="cardAction d-flex justify-content-between px-1">
+          <div>
+           <div>
+            <a href="#" class="btn btn-outline-danger rounded-4 me-1 mb-2 recipesSourse" target='_blank'
+            ><i class="fa-solid fa-arrow-up-right-from-square"></i
+          ></a>
+          <button class="btn btn-outline-danger rounded-4 mb-2 recipesDetailsBtn">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+          </div>
+          </div>
+          <button onclick='getDetails(${Recipes[i].recipe_id})' class="details btn btn-outline-danger rounded-4 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+    `;
   }
+  recipesMenu.innerHTML = cols;
 }
 
 function fullyload() {
@@ -261,3 +294,11 @@ userIcon.addEventListener("click", function () {
     openmodel();
   }
 });
+
+async function getDetails(recipeId) {
+  let response = await fetch(
+    `https://forkify-api.herokuapp.com/api/get?rId=${recipeId}`
+  );
+  let recpidetails = await response.json();
+  console.log(recpidetails.recipe);
+}

@@ -79,7 +79,13 @@ footer {
   box-shadow: none !important;
 }
 .modal-content {
-  height: 90vh !important;
+  min-height: 90vh !important;
+}
+.resipeDetales {
+  width: 100vw !important;
+}
+.details_dialoge {
+  max-width: 100% !important;
 }
 /* HTML: <div class="loader"></div> */
 .loadscreen {
