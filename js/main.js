@@ -9,6 +9,7 @@ let mail = document.getElementById("mail");
 let loginDoor = document.getElementById("loginDoor");
 let close = document.getElementById("close");
 let userIcon = document.getElementById("userIcon");
+let massage = document.getElementById("massage");
 let mailLabel = document.getElementById("mailLabel");
 let modalbackdrop = document.querySelector(".modal-backdrop");
 let password = document.getElementById("password");
@@ -211,10 +212,16 @@ function loginguser() {
     ) {
       userIcon.innerHTML = RegisteredUserData[i].user.charAt(0);
       userIcon.classList.add("Logged");
+      massage.classList.add("d-none");
       restFormValues();
       loginform = true;
       alreadyRegistered();
     } else {
+      restFormValues();
+      loginform = false;
+      alreadyRegistered();
+      massage.classList.remove("d-none");
+      massage.innerHTML = `Invalid username or password`;
     }
   }
 }
