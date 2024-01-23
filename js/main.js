@@ -86,13 +86,13 @@ function displayRecipes(Recipes) {
         />
       </div>
       <div class="card-body">
-        <h5 class="card-title fs-6 fw-semibold text-center fw-bold recipesTitle">${Recipes[i].title}</h5>
-        <div class="cardAction d-flex align-items-center  justify-content-start gap-1  ">
-           <div class="d-flex justify-content-between  align-items-center">
-           <button onclick='getRecipesDetails(${Recipes[i].recipe_id})' class="details d-block me-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <h5 class="card-title fs-6 fw-semibold  text-center fw-bold recipesTitle">${Recipes[i].title}</h5>
+        <div class="cardAction  ">
+           <div class="d-flex justify-content-between flex-column flex-lg-row  align-items-center">
+           <button onclick='getRecipesDetails(${Recipes[i].recipe_id})' class="details  w-100 d-block me-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Details <i class="fa-solid fa-book-open-reader"></i>
           </button>
-            <a href="#" class="btn btn-outline-danger  border-2 rounded-5  mb-2 recipesSourse" target='_blank'
+            <a href="#" class="btn btn-outline-danger  border-2 rounded-5 w-100 mb-2 recipesSourse" target='_blank'
             >Source<i class="fa-solid fa-share ms-2 fa-sm"></i
           ></a>
           </div>

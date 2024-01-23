@@ -63,6 +63,10 @@ footer {
   height: 15rem;
 }
 
+.recipesTitle {
+  height: 3rem;
+  overflow: hidden;
+}
 .modal-header {
   padding: 10px 10px !important;
   border: 0 !important;
