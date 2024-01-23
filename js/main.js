@@ -310,36 +310,40 @@ async function getRecipesDetails(id) {
       }" class=" img-fluid detilasImg rounded-4" alt="">
     </div>
     <div class="col-lg-6 col-12">
-      <h4 class="mt-3 mb-4 fw-bold">Sweet Potato Kale Pizza with Rosemary & Red Onion</h4>
+      <h4 class=" mb-4 fw-bold">${foodData.recipe.title}</h4>
       <h5 class='mb-3 fw-bold'>Ingredients 🍴 :
       </h5>
       <div class="form-check">
     ${foodData.recipe.ingredients.map((item, index) => {
-      return `<li class="">
+      return `
+      <ul class="list-unstyled">
+      <li class="">
         <input class="form-check-input" type="checkbox" value="" id=${
           item.charAt(5) + index
         }>
         <label class="form-check-label" for=${item.charAt(5) + index}>
           ${item}
         </label>
-      </li>`;
+      </li>
+      </ul>
+      `;
     })}
         
       </div>
-      <div class="publcher ">
-        <p class="d-flex justify-content-start mt-5 ms-4 align-items-center">Publisher :<span class="me-3 fw-bold">${
-          foodData.recipe.publisher
-        }</span> <a href="${
-    foodData.recipe.source_url
-  }" class="btn btn-outline-danger rounded-4 me-1 mb-2 recipesSourse" target='_blank'
-          ><i class="fa-solid fa-arrow-up-right-from-square"></i
+      <div class="publcher  ">
+        <p class="d-flex  justify-content-start mt-5 ms-4 align-items-center fw-bold">You can find the original recipe on :<span class="me-3 fw-bold"></span> <a href="${
+          foodData.recipe.source_url
+        }" class="btn btn-outline-danger rounded-4  recipesSourse" target='_blank'
+          >${
+            foodData.recipe.publisher
+          }<i class="fa-solid ms-1 fa-sm fa-arrow-up-right-from-square"></i
         ></a></p>
        
       </div>
     </div>
   </div>
   <div class="modal-footer border-0">
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="button" class="btn bg-danger-subtle  fw-bold px-5 rounded-5" data-bs-dismiss="modal">Close</button>
     
   </div>
 </div>
