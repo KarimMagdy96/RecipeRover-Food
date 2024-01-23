@@ -6,7 +6,10 @@ let loadscreen = document.getElementById("loadscreen");
 let bodyVisable = document.getElementById("bodyVisable");
 let recipesMenu = document.getElementById("recipesMenu");
 let formContainer = document.querySelector(".form_container");
-let sowHidePw = document.querySelector(".sowHidePw");
+let sowHidePw = document.querySelectorAll(".sowHidePw");
+let signUp = document.querySelector(".signup-text");
+let loginText = document.querySelector(".login-text");
+
 let userIcon = document.getElementById("userIcon");
 pwFields = document.querySelectorAll(".password");
 let detailsDialoge = document.getElementById("detailsDialoge");
@@ -18,6 +21,27 @@ let recipesDetailsBtn = Array.from(
   document.querySelectorAll(".recipesDetailsBtn")
 );
 
+sowHidePw.forEach((eyeIcon) => {
+  eyeIcon.addEventListener("click", () => {
+    pwFields.forEach((pwFields) => {
+      if (pwFields.type == "password") {
+        pwFields.type = "text";
+        sowHidePw.forEach((eyeIcon) => {
+          eyeIcon.classList.replace("fa-eye-slash", "fa-eye");
+        });
+      } else {
+        pwFields.type = "password";
+        eyeIcon.classList.replace("fa-eye", "fa-eye-slash");
+      }
+    });
+  });
+});
+signUp.addEventListener("click", () => {
+  formContainer.classList.add("hide");
+});
+loginText.addEventListener("click", () => {
+  formContainer.classList.remove("hide");
+});
 let searchQuerieCard = Array.from(
   document.querySelectorAll(".searchQuerieCard")
 );

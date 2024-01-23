@@ -80,6 +80,7 @@ footer {
 }
 .modal-content {
   min-height: 90vh !important;
+  overflow: hidden;
 }
 
 .resipeDetales {
@@ -92,8 +93,26 @@ footer {
 }
 
 /* form */
+.hide {
+  left: -100%;
+}
 .form_container {
   position: relative;
+}
+.form_container.active .login {
+  margin-left: -50%;
+}
+.regForm {
+}
+.form_container .forms {
+  width: 205%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form_container .form {
+  width: 48%;
 }
 .form_container .form .title {
   font-size: 27px;
