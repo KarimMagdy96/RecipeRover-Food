@@ -94,7 +94,7 @@ footer {
 
 /* form */
 .hide {
-  left: -100%;
+  left: -101%;
 }
 .form_container {
   position: relative;
