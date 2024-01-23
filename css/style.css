@@ -90,6 +90,90 @@ footer {
   width: 100% !important;
   height: 25.75rem !important;
 }
+
+/* form */
+.form_container {
+  position: relative;
+}
+.form_container .form .title {
+  font-size: 27px;
+  font-weight: bold;
+  position: relative;
+}
+.form .title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  background-color: red;
+  border-radius: 25px;
+}
+.form .input_field {
+  margin-top: 30px;
+  height: 50px;
+
+  position: relative;
+}
+.form .input_field input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 0 35px;
+  border: none;
+  font-size: 16px;
+  outline: none;
+  border-bottom: 2px solid #ccc;
+  border-top: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+.form .input_field input:is(:focus, :valid) {
+  border-bottom: 2px solid #f7d7da;
+}
+.form .input_field input:is(:focus, :valid) ~ i {
+  color: #ec9ea6;
+}
+
+.form .input_field i {
+  position: absolute;
+  top: 50%;
+  color: #999;
+  font-size: 23px;
+  transform: translateY(-50%);
+}
+.input_field i.icon {
+  left: 0;
+}
+.input_field i.sowHidePw {
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+}
+.form .button {
+  margin-top: 35px;
+}
+.form .button input {
+  border: none;
+  background-color: #ad232f;
+  color: #fff;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+.form .button input:hover {
+  background-color: #901d28;
+}
+.form .login_signup {
+  margin-top: 30px;
+  text-align: center;
+}
+.form .login_signup a {
+  text-decoration: none;
+}
 /* HTML: <div class="loader"></div> */
 .loadscreen {
   z-index: 9999;

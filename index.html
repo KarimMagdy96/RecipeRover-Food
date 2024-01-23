@@ -119,18 +119,61 @@
       <div class=" d-flex justify-content-end pb-5">
         <button data-bs-dismiss="modal" aria-label="Close" class="btn bg-danger-subtle " id="close"><i class="fa-solid fa-xmark"></i></button>
       </div>
-      <div class="regForm container ">
-        <div id="massage" class=" d-none ms-1 mb-3  fw-bold bg-danger-subtle p-2  rounded-3"></div>
-        <label for="User" class="d-block mb-1 text-secondary fw-bold fs-5">User name</label>
-        <input id="user" type="text" id="user" class="form-control py-3" placeholder=" Try * user || 3 to 16 characters" />
-        <label id="mailLabel" for="email" class="text-secondary mt-3 mb-1 fw-bold fs-5" >Email</label>
-        <input id="mail" type="email" class="form-control py-3" placeholder="Try * e@mail.com || any valid Email">
-        <label  for="password" class="text-secondary mt-3 mb-1 fw-bold fs-5" >Password</label>
-        <input id="password" type="password" class="form-control py-3" placeholder="Try * 1234 || any password from 8 to 12 characters">
-        <button id="signBtn" class="btn btn-outline-danger py-2 px-5 text-center fw-bold w-100 mt-4 d-block m-auto mb-2">REGISTER</button>
-      </div>
-      <div id="alreadyUser" class=" text-secondary py-3 px-5 fw-bold">
-        Already have accounte?<button   id="loginDoor" class="text-decoration-none ms-2 bg-transparent border-0 fw-bold text-danger">Login</button> 
+      <div class="regForm container form_container">
+        <div class="forms">
+          <div class="form login">
+            <span class="title">Login</span>
+            <div>
+             <div class="input_field">
+              <input type="text" placeholder="Enter your Email" required>
+              <i class="fa-solid fa-envelope icon"></i>
+             </div>
+             <div class="input_field">
+              <input type="password" placeholder="Enter your Password" required>
+              <i class="fa-solid fa-lock icon"></i>
+              <i class="fa-regular fa-eye sowHidePw"></i>
+             </div>
+             <div class="input_field button">
+              <input type="button" value="Login Now" >
+             
+             </div>
+            </div>
+            <div class="login_signup">
+              <span class="text">Not a member?
+                <a href="#" class="text signup-text">Signup now</a>
+              </span>
+            </div>
+          </div>
+          <!-- registraion -->
+          <div class="form login">
+            <span class="title">Registration</span>
+            <div>
+             <div class="input_field">
+              <input type="text" placeholder="Enter your Name" required>
+              <i class="fa-solid fa-user"></i>
+             </div>
+             <div class="input_field">
+              <input type="text" placeholder="Enter your Email" required>
+              <i class="fa-solid fa-envelope icon"></i>
+             </div>
+             <div class="input_field">
+              <input type="password" placeholder="Enter your Password" required>
+              <i class="fa-solid fa-lock icon"></i>
+              <i class="fa-regular fa-eye sowHidePw"></i>
+             </div>
+             <div class="input_field button">
+              <input type="button" value="Login Now" >
+             
+             </div>
+            </div>
+            <div class="login_signup">
+              <span class="text">Not a member?
+                <a href="#" class="text signup-text">Signup now</a>
+              </span>
+            </div>
+          </div>
+         
+        </div>
       </div>
     </div>
   </div>

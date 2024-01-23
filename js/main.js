@@ -4,25 +4,13 @@ let recipesTitle = Array.from(document.querySelectorAll(".recipesTitle"));
 let recipesSourse = Array.from(document.querySelectorAll(".recipesSourse"));
 let loadscreen = document.getElementById("loadscreen");
 let bodyVisable = document.getElementById("bodyVisable");
-let user = document.getElementById("user");
-let mail = document.getElementById("mail");
-let loginDoor = document.getElementById("loginDoor");
-let close = document.getElementById("close");
 let recipesMenu = document.getElementById("recipesMenu");
 let userIcon = document.getElementById("userIcon");
-let massage = document.getElementById("massage");
 let detailsDialoge = document.getElementById("detailsDialoge");
-let mailLabel = document.getElementById("mailLabel");
-let modalbackdrop = document.querySelector(".modal-backdrop");
-let password = document.getElementById("password");
 let details = Array.from(document.getElementsByClassName("details"));
-let staticBackdrop = document.getElementById("staticBackdrop");
-let signBtn = document.getElementById("signBtn");
-let signUp = document.getElementById("signUp");
 const usernameRegex = /^(user|[\w-]{3,16})$/;
 const emailRegex = /^(e@mail\.com|[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,})$/;
 const passwordRegex = /^(1234|\d{8,12})$/;
-let alreadyUser = document.getElementById("alreadyUser");
 let recipesDetailsBtn = Array.from(
   document.querySelectorAll(".recipesDetailsBtn")
 );
@@ -32,7 +20,7 @@ let searchQuerieCard = Array.from(
 );
 let recipesImg = Array.from(document.querySelectorAll(".recipesImg"));
 let Recipeslist;
-var loginform;
+
 // *******************************************************************************
 // start whe site loads
 start("pizza");
@@ -113,188 +101,17 @@ function fullyload() {
 
 // sign up
 
-let RegisteredUserData = [];
-
-if (localStorage.getItem("userData") == null) {
-  RegisteredUserData = [];
-} else {
-  RegisteredUserData = JSON.parse(localStorage.getItem("userData"));
-}
-
-signBtn.addEventListener("click", function () {
-  if (
-    user.value != "" &&
-    mail.value != "" &&
-    password.value != "" &&
-    user.classList.contains("is-valid") &&
-    mail.classList.contains("is-valid") &&
-    password.classList.contains("is-valid")
-  ) {
-    signUser();
-    displayUserData();
-    loginform = true;
-  } else if (
-    user.value != "" &&
-    password.value != "" &&
-    signBtn.innerHTML == `LOGIN` &&
-    mail.classList.contains("d-none") &&
-    RegisteredUserData != null
-  ) {
-    loginguser();
-  }
-});
 //user validation
-user.addEventListener("keyup", function () {
-  if (usernameRegex.test(user.value)) {
-    user.classList.remove("is-invalid");
-    user.classList.add("is-valid");
-  } else {
-    user.classList.remove("is-valid");
-    user.classList.add("is-invalid");
-  }
-});
-//mail validation
-mail.addEventListener("keyup", function () {
-  if (emailRegex.test(mail.value)) {
-    mail.classList.remove("is-invalid");
-    mail.classList.add("is-valid");
-  } else {
-    mail.classList.remove("is-valid");
-    mail.classList.add("is-invalid");
-  }
-});
-// password validation
-password.addEventListener("keyup", function () {
-  if (passwordRegex.test(password.value)) {
-    password.classList.remove("is-invalid");
-    password.classList.add("is-valid");
-  } else {
-    password.classList.remove("is-valid");
-    password.classList.add("is-invalid");
-  }
-});
 
 //  sign up
-function signUser() {
-  if (signBtn.innerText == `REGISTER`) {
-    userData = {
-      user: user.value,
-      mail: mail.value,
-      password: password.value,
-    };
-    RegisteredUserData.push(userData);
-    localStorage.setItem("userData", JSON.stringify(RegisteredUserData));
-  }
-}
-// login display
-function displayUserData() {
-  signBtn.innerHTML = `LOGIN`;
-  mail.classList.add("d-none");
-  alreadyUser.innerHTML = `Don't have account?  <button   id="signUp" class="text-decoration-none ms-2 bg-transparent border-0 fw-bold text-danger">Sign Up</button>`;
-  mailLabel.classList.add("d-none");
-  signBtn.classList.add("btn-outline-success");
-  signBtn.classList.remove("btn-outline-danger");
-  restFormValues();
-}
 
 //rest fORM FOR LOGIN
-alreadyUser.addEventListener("click", function () {
-  alreadyRegistered();
-});
 
-//rest fORM FOR LOGIN
-function alreadyRegistered() {
-  signBtn.innerHTML = `REGISTER`;
-  mail.classList.toggle("d-none");
-  mailLabel.classList.toggle("d-none");
-  signBtn.classList.toggle("btn-outline-success");
-  signBtn.classList.toggle("btn-outline-danger");
-  if (signBtn.classList.contains("btn-outline-success")) {
-    signBtn.innerHTML = `LOGIN`;
-    alreadyUser.innerHTML = `Don't have account?  <button   id="signUp" class="text-decoration-none ms-2 bg-transparent border-0 fw-bold text-danger">Sign Up</button>`;
-    restFormValues();
-  } else {
-    alreadyUser.innerHTML = `Already have accounte?  <button   id="signUp" class="text-decoration-none ms-2 bg-transparent border-0 fw-bold text-danger">Login</button>`;
-    restFormValues();
-  }
-  if (signBtn.classList.contains("btn-outline-success")) {
-    loginform = true;
-  } else if (signBtn.classList.contains("btn-outline-danger")) {
-    loginform = false;
-  }
-}
-//rest form values
-function restFormValues() {
-  user.value = "";
-  mail.value = "";
-  password.value = "";
-  user.classList.remove("is-valid");
-  password.classList.remove("is-valid");
-  mail.classList.remove("is-valid");
-}
-
-function loginguser() {
-  for (let i = 0; i < RegisteredUserData.length; i++) {
-    if (
-      RegisteredUserData[i].user == user.value &&
-      RegisteredUserData[i].password == password.value
-    ) {
-      userIcon.innerHTML = RegisteredUserData[i].user.charAt(0);
-      userIcon.classList.add("Logged");
-      massage.classList.add("d-none");
-      restFormValues();
-      loginform = true;
-      alreadyRegistered();
-    } else {
-      massage.classList.remove("d-none");
-      massage.innerHTML = `Invalid username or password`;
-    }
-  }
-}
-
-function closeModal() {
-  signBtn.setAttribute("data-bs-dismiss", "modal");
-  signBtn.setAttribute("aria-label", "Close");
-}
-
-function closelogin() {
-  for (let i = 0; i < RegisteredUserData.length; i++) {
-    if (
-      RegisteredUserData[i].user == user.value &&
-      RegisteredUserData[i].password == password.value &&
-      loginform &&
-      password.classList.contains("is-valid") &&
-      user.classList.contains("is-valid") &&
-      signBtn.classList.contains("btn-outline-success")
-    ) {
-      closeModal();
-    }
-  }
-}
-user.addEventListener("keyup", function () {
-  closelogin();
-  massage.classList.add("d-none");
-});
-password.addEventListener("keyup", function () {
-  closelogin();
-  massage.classList.add("d-none");
-});
-
-function openmodel() {
-  signBtn.removeAttribute("data-bs-dismiss");
-  signBtn.removeAttribute("aria-label");
-}
-
-userIcon.addEventListener("click", function () {
-  if (userIcon.classList.contains("Logged")) {
-    openmodel();
-  }
-});
-
+//get recipes details
 async function getRecipesDetails(id) {
   let food = await fetch(`https://forkify-api.herokuapp.com/api/get?rId=${id}`);
   let foodData = await food.json();
-  console.log(foodData.recipe);
+
   let detailsRestrive = `
   <div class="modal-content resipeDetales  container">
   <div class="modal-header border-0  ">
