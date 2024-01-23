@@ -310,7 +310,7 @@ async function getRecipesDetails(id) {
       }" class=" img-fluid detilasImg rounded-4" alt="">
     </div>
     <div class="col-lg-6 col-12">
-      <h4 class=" mb-4 fw-bold">${foodData.recipe.title}</h4>
+      <h4 class=" mb-4 fw-bold mt-3 mt-md-0 ">${foodData.recipe.title}</h4>
       <h5 class='mb-3 fw-bold'>Ingredients 🍴 :
       </h5>
       <div class="form-check">
@@ -336,7 +336,7 @@ async function getRecipesDetails(id) {
         }" class="btn btn-outline-danger rounded-4  recipesSourse" target='_blank'
           >${
             foodData.recipe.publisher
-          }<i class="fa-solid ms-1 fa-sm fa-arrow-up-right-from-square"></i
+          }<i class="fa-solid fa-person-walking-arrow-right ms-1  "></i
         ></a></p>
        
       </div>
