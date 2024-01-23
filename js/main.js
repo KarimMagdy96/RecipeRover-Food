@@ -20,28 +20,6 @@ const passwordRegex = /^(1234|\d{8,12})$/;
 let recipesDetailsBtn = Array.from(
   document.querySelectorAll(".recipesDetailsBtn")
 );
-
-sowHidePw.forEach((eyeIcon) => {
-  eyeIcon.addEventListener("click", () => {
-    pwFields.forEach((pwFields) => {
-      if (pwFields.type == "password") {
-        pwFields.type = "text";
-        sowHidePw.forEach((eyeIcon) => {
-          eyeIcon.classList.replace("fa-eye-slash", "fa-eye");
-        });
-      } else {
-        pwFields.type = "password";
-        eyeIcon.classList.replace("fa-eye", "fa-eye-slash");
-      }
-    });
-  });
-});
-signUp.addEventListener("click", () => {
-  formContainer.classList.add("hide");
-});
-loginText.addEventListener("click", () => {
-  formContainer.classList.remove("hide");
-});
 let searchQuerieCard = Array.from(
   document.querySelectorAll(".searchQuerieCard")
 );
@@ -175,7 +153,7 @@ async function getRecipesDetails(id) {
         
       </div>
       <div class="publcher  ">
-        <p class="d-flex  justify-content-start mt-5 ms-4 align-items-center fw-bold">You can find the original recipe on :<span class="me-3 fw-bold"></span> <a href="${
+        <p class="d-flex  justify-content-start mt-5 align-items-center fw-bold"><span class=" fw-bold"></span> <a href="${
           foodData.recipe.source_url
         }" class="btn btn-outline-danger rounded-4  recipesSourse" target='_blank'
           >${
@@ -194,3 +172,28 @@ async function getRecipesDetails(id) {
   `;
   detailsDialoge.innerHTML = detailsRestrive;
 }
+
+// login form show password or hide
+sowHidePw.forEach((eyeIcon) => {
+  eyeIcon.addEventListener("click", () => {
+    pwFields.forEach((pwFields) => {
+      if (pwFields.type == "password") {
+        pwFields.type = "text";
+        sowHidePw.forEach((eyeIcon) => {
+          eyeIcon.classList.replace("fa-eye-slash", "fa-eye");
+        });
+      } else {
+        pwFields.type = "password";
+        eyeIcon.classList.replace("fa-eye", "fa-eye-slash");
+      }
+    });
+  });
+});
+
+// move between login and sign up
+signUp.addEventListener("click", () => {
+  formContainer.classList.add("hide");
+});
+loginText.addEventListener("click", () => {
+  formContainer.classList.remove("hide");
+});
