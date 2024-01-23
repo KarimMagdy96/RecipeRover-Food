@@ -307,7 +307,7 @@ async function getRecipesDetails(id) {
     /></a>
     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
   </div>
-  <div class="modal-body row">
+  <div class="modal-body row ">
     <div class="modelImg  col-lg-6 col-12">
       <img src="${
         foodData.recipe.image_url
