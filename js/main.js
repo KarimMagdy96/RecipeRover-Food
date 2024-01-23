@@ -89,7 +89,7 @@ function displayRecipes(Recipes) {
         <h5 class="card-title fs-6 fw-semibold  text-center fw-bold recipesTitle">${Recipes[i].title}</h5>
         <div class="cardAction  ">
            <div class="d-flex justify-content-between flex-column flex-lg-row  align-items-center">
-           <button onclick='getRecipesDetails(${Recipes[i].recipe_id})' class="details  w-100 d-block me-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+           <button onclick='getRecipesDetails(${Recipes[i].recipe_id})' class="details  w-100 d-block me-lg-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Details <i class="fa-solid fa-book-open-reader"></i>
           </button>
             <a href="#" class="btn btn-outline-danger  border-2 rounded-5 w-100 mb-2 recipesSourse" target='_blank'
