@@ -80,7 +80,7 @@ footer {
 }
 .modal-content {
   min-height: 90vh !important;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .resipeDetales {
@@ -94,10 +94,11 @@ footer {
 
 /* form */
 .hide {
-  left: -101%;
+  left: -100.5% !important;
 }
 .form_container {
   position: relative;
+  left: 0.5%;
 }
 .form_container.active .login {
   margin-left: -50%;
