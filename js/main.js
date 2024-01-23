@@ -11,6 +11,7 @@ let close = document.getElementById("close");
 let recipesMenu = document.getElementById("recipesMenu");
 let userIcon = document.getElementById("userIcon");
 let massage = document.getElementById("massage");
+let detailsDialoge = document.getElementById("detailsDialoge");
 let mailLabel = document.getElementById("mailLabel");
 let modalbackdrop = document.querySelector(".modal-backdrop");
 let password = document.getElementById("password");
@@ -56,7 +57,6 @@ for (let r = 0; r < searchQuerieCard.length; r++) {
 async function start(category) {
   await getRecipes(category);
   displayRecipes(Recipeslist);
-  getDetails(category);
 }
 
 // get all recipes
@@ -98,7 +98,7 @@ function displayRecipes(Recipes) {
           </button>
           </div>
           </div>
-          <button onclick='getDetails(${Recipes[i].recipe_id})' class="details btn btn-outline-danger rounded-4 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <button onclick='getRecipesDetails(${Recipes[i].recipe_id})' class="details btn btn-outline-danger rounded-4 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Details
           </button>
         </div>
@@ -295,10 +295,58 @@ userIcon.addEventListener("click", function () {
   }
 });
 
-async function getDetails(recipeId) {
-  let response = await fetch(
-    `https://forkify-api.herokuapp.com/api/get?rId=${recipeId}`
-  );
-  let recpidetails = await response.json();
-  console.log(recpidetails.recipe);
+async function getRecipesDetails(id) {
+  let food = await fetch(`https://forkify-api.herokuapp.com/api/get?rId=${id}`);
+  let foodData = await food.json();
+  console.log(foodData.recipe);
+  let detailsRestrive = `
+  <div class="modal-content resipeDetales  container">
+  <div class="modal-header border-0  ">
+    <a class="navbar-brand me-auto fw-bold logo py-2" href="#"
+      ><img src="" alt=""
+    /></a>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body row">
+    <div class="modelImg  col-lg-6 col-12">
+      <img src="${
+        foodData.recipe.image_url
+      }" class=" img-fluid detilasImg rounded-4" alt="">
+    </div>
+    <div class="col-lg-6 col-12">
+      <h4 class="mt-3 mb-4 fw-bold">Sweet Potato Kale Pizza with Rosemary & Red Onion</h4>
+      <h5 class='mb-3 fw-bold'>Ingredients 🍴 :
+      </h5>
+      <div class="form-check">
+    ${foodData.recipe.ingredients.map((item, index) => {
+      return `<li class="">
+        <input class="form-check-input" type="checkbox" value="" id=${
+          item.charAt(5) + index
+        }>
+        <label class="form-check-label" for=${item.charAt(5) + index}>
+          ${item}
+        </label>
+      </li>`;
+    })}
+        
+      </div>
+      <div class="publcher ">
+        <p class="d-flex justify-content-start mt-5 ms-4 align-items-center">Publisher :<span class="me-3 fw-bold">${
+          foodData.recipe.publisher
+        }</span> <a href="${
+    foodData.recipe.source_url
+  }" class="btn btn-outline-danger rounded-4 me-1 mb-2 recipesSourse" target='_blank'
+          ><i class="fa-solid fa-arrow-up-right-from-square"></i
+        ></a></p>
+       
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer border-0">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    
+  </div>
+</div>
+  `;
+  detailsDialoge.innerHTML = detailsRestrive;
 }

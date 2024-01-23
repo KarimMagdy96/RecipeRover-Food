@@ -81,14 +81,17 @@ footer {
 .modal-content {
   min-height: 90vh !important;
 }
-.modelImg {
-  height: 300px;
-}
+
 .resipeDetales {
   width: 100vw !important;
+  height: fit-content !important;
 }
 .details_dialoge {
   max-width: 100% !important;
+}
+.detilasImg {
+  width: 100% !important;
+  height: 25.75rem !important;
 }
 /* HTML: <div class="loader"></div> */
 .loadscreen {
