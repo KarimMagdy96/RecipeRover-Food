@@ -94,10 +94,11 @@ footer {
 
 /* form */
 .hide {
-  left: -100%;
+  left: -100% !important;
 }
 .form_container {
   position: relative;
+  left: 1.5%;
 }
 .form_container.active .login {
   margin-left: -50%;
