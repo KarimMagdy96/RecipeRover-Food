@@ -87,9 +87,9 @@ function displayRecipes(Recipes) {
       </div>
       <div class="card-body">
         <h5 class="card-title fs-6 fw-semibold  recipesTitle">${Recipes[i].title}</h5>
-        <div class="cardAction d-flex justify-content-between px-1">
+        <div class="cardAction d-flex flex-column justify-content-between px-1">
           <div>
-           <div>
+           <div class="d-flex justify-content-between mb-2 align-items-center">
             <a href="#" class="btn btn-outline-danger rounded-4 me-1 mb-2 recipesSourse" target='_blank'
             ><i class="fa-solid fa-arrow-up-right-from-square"></i
           ></a>
