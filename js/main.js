@@ -9,7 +9,11 @@ let formContainer = document.querySelector(".form_container");
 let sowHidePw = document.querySelectorAll(".sowHidePw");
 let signUp = document.querySelector(".signup-text");
 let loginText = document.querySelector(".login-text");
-
+let reguser = document.querySelector(".reguser");
+let regmail = document.querySelector(".regmail");
+let sucseesMsg = document.querySelector(".sucseesMsg");
+let RegisterBtn = document.querySelector(".RegisterBtn");
+let regpass = document.querySelector(".regpass");
 let userIcon = document.getElementById("userIcon");
 pwFields = document.querySelectorAll(".password");
 let detailsDialoge = document.getElementById("detailsDialoge");
@@ -27,6 +31,14 @@ let recipesImg = Array.from(document.querySelectorAll(".recipesImg"));
 let Recipeslist;
 
 // *******************************************************************************
+//ckeak for logged user
+let users = [];
+if (localStorage.getItem("allusers") == null) {
+  users = [];
+} else {
+  users = Array.from(JSON.parse(localStorage.getItem("allusers")));
+}
+
 // start whe site loads
 start("pizza");
 
@@ -197,3 +209,61 @@ signUp.addEventListener("click", () => {
 loginText.addEventListener("click", () => {
   formContainer.classList.remove("hide");
 });
+// validate user
+reguser.addEventListener("keyup", function () {
+  if (usernameRegex.test(reguser.value)) {
+    reguser.classList.remove("is-invalid");
+    reguser.classList.add("is-valid");
+  } else {
+    reguser.classList.remove("is-valid");
+    reguser.classList.add("is-invalid");
+  }
+});
+// validate mail
+regmail.addEventListener("keyup", function () {
+  if (emailRegex.test(regmail.value)) {
+    regmail.classList.remove("is-invalid");
+    regmail.classList.add("is-valid");
+  } else {
+    regmail.classList.remove("is-valid");
+    regmail.classList.add("is-invalid");
+  }
+});
+// validate password
+regpass.addEventListener("keyup", function () {
+  if (passwordRegex.test(regpass.value)) {
+    regpass.classList.remove("is-invalid");
+    regpass.classList.add("is-valid");
+  } else {
+    regpass.classList.remove("is-valid");
+    regpass.classList.add("is-invalid");
+  }
+});
+
+// add to local storage
+RegisterBtn.addEventListener("click", function () {
+  if (
+    reguser.classList.contains("is-valid") &&
+    regpass.classList.contains("is-valid") &&
+    regmail.classList.contains("is-valid") &&
+    reguser.value.length > 0 &&
+    regpass.value.length > 0 &&
+    regmail.value.length > 0
+  ) {
+    let user = {
+      username: reguser.value,
+      password: regpass.value,
+      email: regmail.value,
+    };
+    users.push(user);
+    localStorage.setItem("allusers", JSON.stringify(users));
+    sucseesMsg.innerHTML = `
+    👋 ${reguser.value}, your account is created Sussfully , go to login now !!
+    `;
+    sucseesMsg.classList.remove("d-none");
+    reguser.value = "";
+    regmail.value = "";
+    regpass.value = "";
+  }
+});
+console.log(users);
