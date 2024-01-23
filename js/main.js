@@ -77,30 +77,26 @@ function displayRecipes(Recipes) {
     <div class="col">
     <div class="card h-100 border-0 shadow rounded-4 border-0">
       <div
-        class="popCardImg bg-danger-subtle p-3 d-flex justify-content-center align-items-center rounded-4"
+        class="popCardImg bg-danger-subtle p-2 d-flex justify-content-center align-items-center rounded-4"
       >
         <img
           src=${Recipes[i].image_url}
-          class="card-img-top rounded-circle img-fluid recipesImg "
+          class="card-img-top  w-100 rounded-3 recipesImg "
           alt="..."
         />
       </div>
       <div class="card-body">
-        <h5 class="card-title fs-6 fw-semibold  recipesTitle">${Recipes[i].title}</h5>
-        <div class="cardAction d-flex flex-column justify-content-between px-1">
-          <div>
-           <div class="d-flex justify-content-between mb-2 align-items-center">
-            <a href="#" class="btn btn-outline-danger rounded-4 me-1 mb-2 recipesSourse" target='_blank'
-            ><i class="fa-solid fa-arrow-up-right-from-square"></i
+        <h5 class="card-title fs-6 fw-semibold text-center fw-bold recipesTitle">${Recipes[i].title}</h5>
+        <div class="cardAction d-flex align-items-center  justify-content-start gap-1  ">
+           <div class="d-flex justify-content-between  align-items-center">
+           <button onclick='getRecipesDetails(${Recipes[i].recipe_id})' class="details d-block me-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Details <i class="fa-solid fa-book-open-reader"></i>
+          </button>
+            <a href="#" class="btn btn-outline-danger  border-2 rounded-5  mb-2 recipesSourse" target='_blank'
+            >Source<i class="fa-solid fa-share ms-2 fa-sm"></i
           ></a>
-          <button class="btn btn-outline-danger rounded-4 mb-2 recipesDetailsBtn">
-            <i class="fa-regular fa-heart"></i>
-          </button>
           </div>
-          </div>
-          <button onclick='getRecipesDetails(${Recipes[i].recipe_id})' class="details btn btn-outline-danger rounded-4 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Details
-          </button>
+         
         </div>
       </div>
     </div>
