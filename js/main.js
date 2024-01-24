@@ -102,7 +102,7 @@ function displayRecipes(Recipes) {
            <button onclick='getRecipesDetails(${Recipes[i].recipe_id})' class="details  w-100 d-block me-lg-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Details <i class="fa-solid fa-book-open-reader"></i>
           </button>
-            <a href="#" class="btn btn-outline-danger  border-2 rounded-5 w-100 mb-2 recipesSourse" target='_blank'
+            <a href=${Recipes[i].source_url} class="btn btn-outline-danger  border-2 rounded-5 w-100 mb-2 recipesSourse" target='_blank'
             >Source<i class="fa-solid fa-share ms-2 fa-sm"></i
           ></a>
           </div>
