@@ -404,12 +404,6 @@ function displayFavRecipes() {
   badge.innerHTML = favRecipesList.length;
 }
 //save favRecpes
-// if (localStorage.getItem("favRecipes") == null) {
-//   favRecipesList = [];
-// } else {
-//   favRecipesList = JSON.parse(localStorage.getItem("favRecipes"));
-//   displayFavRecipes();
-// }
 
 //remove unwanted recp
 function removeFav(id) {
