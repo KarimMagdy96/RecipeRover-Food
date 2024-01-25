@@ -26,7 +26,7 @@ let RegisterBtn = document.querySelector(".RegisterBtn");
 let regpass = document.querySelector(".regpass");
 let userIcon = document.getElementById("userIcon");
 let logbtn = document.querySelector(".logbtn");
-pwFields = document.querySelectorAll(".password");
+let pwFields = document.querySelectorAll(".password");
 let detailsDialoge = document.getElementById("detailsDialoge");
 let details = Array.from(document.getElementsByClassName("details"));
 const usernameRegex = /^(user|[\w-]{3,16})$/;
@@ -301,6 +301,8 @@ logbtn.addEventListener("click", function () {
       👋 you are logged in successfully !!
       `;
       logMsg.classList.remove("d-none");
+      userIcon.innerHTML = users[i].username;
+      userIcon.classList.add("p-4");
       logerrorMsg.classList.add("d-none");
       logmail.value = "";
       logpass.value = "";
