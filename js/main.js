@@ -12,7 +12,6 @@ let loginText = document.querySelector(".login-text");
 let reguser = document.querySelector(".reguser");
 let likebtn = document.querySelectorAll(".likebtn");
 let lovedRecipes = document.querySelector(".lovedRecipes");
-let test = document.querySelector(".test");
 let loveICon = document.querySelector(".loveICon");
 let regmail = document.querySelector(".regmail");
 let logerrorMsg = document.querySelector(".logerrorMsg");
@@ -238,34 +237,45 @@ reguser.addEventListener("keyup", function () {
   if (usernameRegex.test(reguser.value)) {
     reguser.classList.remove("is-invalid");
     reguser.classList.add("is-valid");
+    sucseesMsg.classList.add("d-none");
   } else {
     reguser.classList.remove("is-valid");
     reguser.classList.add("is-invalid");
+    sucseesMsg.classList.add("d-none");
   }
 });
 // validate mail
 regmail.addEventListener("keyup", function () {
   if (emailRegex.test(regmail.value)) {
     regmail.classList.remove("is-invalid");
+    sucseesMsg.classList.add("d-none");
     regmail.classList.add("is-valid");
   } else {
     regmail.classList.remove("is-valid");
     regmail.classList.add("is-invalid");
+    sucseesMsg.classList.add("d-none");
   }
 });
 // validate password
 regpass.addEventListener("keyup", function () {
   if (passwordRegex.test(regpass.value)) {
     regpass.classList.remove("is-invalid");
+    sucseesMsg.classList.add("d-none");
     regpass.classList.add("is-valid");
   } else {
     regpass.classList.remove("is-valid");
     regpass.classList.add("is-invalid");
+    sucseesMsg.classList.add("d-none");
   }
 });
 
 // add to local storage
 RegisterBtn.addEventListener("click", function () {
+  let user = {
+    username: reguser.value,
+    password: regpass.value,
+    email: regmail.value,
+  };
   if (
     reguser.classList.contains("is-valid") &&
     regpass.classList.contains("is-valid") &&
@@ -274,17 +284,28 @@ RegisterBtn.addEventListener("click", function () {
     regpass.value.length > 0 &&
     regmail.value.length > 0
   ) {
-    let user = {
-      username: reguser.value,
-      password: regpass.value,
-      email: regmail.value,
-    };
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].username == user.username) {
+        sucseesMsg.classList.replace("bg-success-subtle", "bg-danger-subtle");
+        sucseesMsg.classList.remove("d-none");
+        sucseesMsg.innerHTML = "Username Already Taken";
+        return;
+      }
+      if (users[i].email == user.email) {
+        sucseesMsg.classList.replace("bg-success-subtle", "bg-danger-subtle");
+        sucseesMsg.classList.remove("d-none");
+        sucseesMsg.innerHTML = "Email Already Taken";
+        return;
+      }
+    }
     users.push(user);
     localStorage.setItem("allusers", JSON.stringify(users));
+    localStorage.setItem(JSON.stringify(user.username), JSON.stringify(users));
 
     sucseesMsg.innerHTML = `
     👋 ${reguser.value}, your account is Ready , go to login now !!
     `;
+    sucseesMsg.classList.replace("bg-danger-subtle", "bg-success-subtle");
     sucseesMsg.classList.remove("d-none");
     reguser.value = "";
     regmail.value = "";
