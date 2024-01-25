@@ -39,8 +39,8 @@ let searchQuerieCard = Array.from(
 );
 let recipesImg = Array.from(document.querySelectorAll(".recipesImg"));
 let Recipeslist;
+let currentUser = "user";
 let favRecipesList = [];
-
 // *******************************************************************************
 //ckeak for logged user
 let users = [];
@@ -324,6 +324,13 @@ logbtn.addEventListener("click", function () {
       logMsg.classList.remove("d-none");
       userIcon.innerHTML = users[i].username;
       userIcon.classList.add("p-4");
+      currentUser = users[i].username;
+      if (localStorage.getItem(currentUser) == null) {
+        favRecipesList = [];
+      } else {
+        favRecipesList = JSON.parse(localStorage.getItem(currentUser));
+        displayFavRecipes();
+      }
       logerrorMsg.classList.add("d-none");
       logmail.value = "";
       logpass.value = "";
@@ -342,6 +349,7 @@ function addToFav(id) {
     }
   }
   localStorage.setItem("favRecipes", JSON.stringify(favRecipesList));
+  localStorage.setItem(currentUser, JSON.stringify(favRecipesList));
   displayFavRecipes();
 }
 //display favRecipes
@@ -396,12 +404,12 @@ function displayFavRecipes() {
   badge.innerHTML = favRecipesList.length;
 }
 //save favRecpes
-if (localStorage.getItem("favRecipes") == null) {
-  favRecipesList = [];
-} else {
-  favRecipesList = JSON.parse(localStorage.getItem("favRecipes"));
-  displayFavRecipes();
-}
+// if (localStorage.getItem("favRecipes") == null) {
+//   favRecipesList = [];
+// } else {
+//   favRecipesList = JSON.parse(localStorage.getItem("favRecipes"));
+//   displayFavRecipes();
+// }
 
 //remove unwanted recp
 function removeFav(id) {
@@ -413,4 +421,4 @@ function removeFav(id) {
   localStorage.setItem("favRecipes", JSON.stringify(favRecipesList));
   displayFavRecipes();
 }
-badge.innerHTML = 0;
+badge.innerHTML = favRecipesList.length;
