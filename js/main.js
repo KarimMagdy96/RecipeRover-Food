@@ -38,6 +38,7 @@ let searchQuerieCard = Array.from(
 );
 let recipesImg = Array.from(document.querySelectorAll(".recipesImg"));
 let Recipeslist;
+let favRecipesList = [];
 
 // *******************************************************************************
 //ckeak for logged user
@@ -87,7 +88,6 @@ async function getRecipes(category) {
 // display recipes
 function displayRecipes(Recipes) {
   let cols = ``;
-
   for (let i = 0; i < Recipes.length; i++) {
     cols += `
     <div class="col">
@@ -315,48 +315,48 @@ logbtn.addEventListener("click", function () {
 
 //add loved recipes to recipes cart
 function addToFav(id) {
+  let col = ``;
   for (let i = 0; i < Recipeslist.length; i++) {
     if (Recipeslist[i].recipe_id == id) {
-      col = ``;
+      favRecipesList.push(Recipeslist[i]);
     }
   }
-}
-/*
-  let id = likebtn[i].getAttribute("data-id");
-    let title = likebtn[i].getAttribute("data-title");
-    let image = likebtn[i].getAttribute("data-image");
-    lovedRecipes.innerHTML = `
-    <div class="col">
+  for (let i = 0; i < favRecipesList.length; i++) {
+    col += `
+  
+    <div class="col mb-3">
     <div class="card h-100 border-0 shadow rounded-4 border-0">
       <div
         class="popCardImg bg-danger-subtle p-2 d-flex justify-content-center align-items-center rounded-4 position-relative"
       >
-      <button data-id = data-title= data-image= class="btn  bg-danger-subtle ms-3 rounded-5 likebtn   position-absolute top-0 start-0 mt-3">
-      <i class="fa-regular d-block fa-heart p-2"></i>
-    </button>
+    
         <img
-          src=
+          src=${favRecipesList[i].image_url}
           class="card-img-top  w-100 rounded-3 recipesImg "
-          alt=
+          alt=''
         />
       </div>
       <div class="card-body">
-        <h5 class="card-title fs-6 fw-semibold  text-center fw-bold recipesTitle"></h5>
+        <h5 class="card-title fs-6 fw-semibold  text-center fw-bold recipesTitle">${favRecipesList[i].title}</h5>
+        </h5>
         <div class="cardAction  ">
            <div class="d-flex justify-content-between flex-column flex-lg-row  align-items-center">
-           <button onclick='getRecipesDetails()' class="details  w-100 d-block me-lg-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+           <button onclick='getRecipesDetails(${favRecipesList[i].recipe_id})'  class="details  w-100 d-block me-lg-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Details <i class="fa-solid fa-book-open-reader"></i>
           </button>
-            <a href= class="btn btn-outline-danger  border-2 rounded-5 w-100 mb-2 recipesSourse" target='_blank'
+            <a href=${favRecipesList[i].source_url} class="btn btn-outline-danger  border-2 rounded-5 w-100 mb-2 recipesSourse" target='_blank'
             >Source<i class="fa-solid fa-share ms-2 fa-sm"></i
           ></a>
+          
           </div>
-         
+          <button onclick='getRecipesDetails(${favRecipesList[i].recipe_id})'  class="details  w-100 d-block me-lg-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Remove <i class="fa-solid fa-book-open-reader"></i>
+        </button>
         </div>
       </div>
     </div>
   </div>
-    `;
-    alert("add to loved recipes");
-
-*/
+  `;
+  }
+  lovedRecipes.innerHTML = col;
+}
