@@ -390,3 +390,4 @@ function removeFav(id) {
   localStorage.setItem("favRecipes", JSON.stringify(favRecipesList));
   displayFavRecipes();
 }
+badge.innerHTML = 0;
