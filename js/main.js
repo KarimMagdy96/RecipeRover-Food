@@ -19,6 +19,7 @@ let logerrorMsg = document.querySelector(".logerrorMsg");
 let logmail = document.querySelector(".logmail");
 let logMsg = document.querySelector(".logMsg");
 let logpass = document.querySelector(".logpass");
+let badge = document.querySelector(".badge");
 let loguser = document.querySelector(".loguser");
 let sucseesMsg = document.querySelector(".sucseesMsg");
 let RegisterBtn = document.querySelector(".RegisterBtn");
@@ -132,7 +133,6 @@ function displayRecipes(Recipes) {
     `;
   }
   recipesMenu.innerHTML = cols;
-  console.log(loveICon);
 }
 
 function fullyload() {
@@ -313,12 +313,17 @@ logbtn.addEventListener("click", function () {
 
 //add loved recipes to recipes cart
 function addToFav(id) {
-  let col = ``;
   for (let i = 0; i < Recipeslist.length; i++) {
     if (Recipeslist[i].recipe_id == id) {
       favRecipesList.push(Recipeslist[i]);
     }
   }
+  localStorage.setItem("favRecipes", JSON.stringify(favRecipesList));
+  displayFavRecipes();
+}
+//display favRecipes
+function displayFavRecipes() {
+  let col = ``;
   for (let i = 0; i < favRecipesList.length; i++) {
     col += `
   
@@ -335,19 +340,27 @@ function addToFav(id) {
         />
       </div>
       <div class="card-body">
-        <h5 class="card-title fs-6 fw-semibold  text-center fw-bold recipesTitle">${favRecipesList[i].title}</h5>
+        <h5 class="card-title fs-6 fw-semibold  text-center fw-bold recipesTitle">${
+          favRecipesList[i].title
+        }</h5>
         </h5>
         <div class="cardAction  ">
            <div class="d-flex justify-content-between flex-column flex-lg-row  align-items-center">
-           <button onclick='getRecipesDetails(${favRecipesList[i].recipe_id})'  class="details  w-100 d-block me-lg-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+           <button onclick='getRecipesDetails(${
+             favRecipesList[i].recipe_id
+           })'  class="details  w-100 d-block me-lg-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Details <i class="fa-solid fa-book-open-reader"></i>
           </button>
-            <a href=${favRecipesList[i].source_url} class="btn btn-outline-danger  border-2 rounded-5 w-100 mb-2 recipesSourse" target='_blank'
+            <a href=${
+              favRecipesList[i].source_url
+            } class="btn btn-outline-danger  border-2 rounded-5 w-100 mb-2 recipesSourse" target='_blank'
             >Source<i class="fa-solid fa-share ms-2 fa-sm"></i
           ></a>
           
           </div>
-          <button onclick='getRecipesDetails(${favRecipesList[i].recipe_id})'  class="details  w-100 d-block me-lg-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <button onclick='removeFav(${JSON.stringify(
+            favRecipesList[i].recipe_id
+          )})'  class="details  w-100 d-block me-lg-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" >
           Remove <i class="fa-solid fa-book-open-reader"></i>
         </button>
         </div>
@@ -357,4 +370,23 @@ function addToFav(id) {
   `;
   }
   lovedRecipes.innerHTML = col;
+  badge.innerHTML = favRecipesList.length;
+}
+//save favRecpes
+if (localStorage.getItem("favRecipes") == null) {
+  favRecipesList = [];
+} else {
+  favRecipesList = JSON.parse(localStorage.getItem("favRecipes"));
+  displayFavRecipes();
+}
+
+//remove unwanted recp
+function removeFav(id) {
+  for (let i = 0; i < favRecipesList.length; i++) {
+    if (favRecipesList[i].recipe_id == id) {
+      favRecipesList.splice(i, 1);
+    }
+  }
+  localStorage.setItem("favRecipes", JSON.stringify(favRecipesList));
+  displayFavRecipes();
 }
