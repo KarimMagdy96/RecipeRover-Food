@@ -89,8 +89,11 @@ function displayRecipes(Recipes) {
     <div class="col">
     <div class="card h-100 border-0 shadow rounded-4 border-0">
       <div
-        class="popCardImg bg-danger-subtle p-2 d-flex justify-content-center align-items-center rounded-4"
+        class="popCardImg bg-danger-subtle p-2 d-flex justify-content-center align-items-center rounded-4 position-relative"
       >
+      <button class="btn  bg-danger-subtle ms-3 rounded-5 likebtn   position-absolute top-0 start-0 mt-3">
+      <i class="fa-regular d-block fa-heart p-2"></i>
+    </button>
         <img
           src=${Recipes[i].image_url}
           class="card-img-top  w-100 rounded-3 recipesImg "
@@ -276,7 +279,7 @@ RegisterBtn.addEventListener("click", function () {
 });
 console.log(users);
 
-//loginuser
+//login user
 logbtn.addEventListener("click", function () {
   for (let i = 0; i < users.length; i++) {
     if (users[i].email == logmail.value && users[i].password == logpass.value) {
@@ -293,3 +296,5 @@ logbtn.addEventListener("click", function () {
     }
   }
 });
+
+//
