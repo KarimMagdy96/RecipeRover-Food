@@ -13,6 +13,7 @@ let reguser = document.querySelector(".reguser");
 let likebtn = document.querySelectorAll(".likebtn");
 let lovedRecipes = document.querySelector(".lovedRecipes");
 let test = document.querySelector(".test");
+let loveICon = document.querySelector(".loveICon");
 let regmail = document.querySelector(".regmail");
 let logerrorMsg = document.querySelector(".logerrorMsg");
 let logmail = document.querySelector(".logmail");
@@ -97,12 +98,8 @@ function displayRecipes(Recipes) {
       >
       <button onclick='addToFav(${JSON.stringify(
         Recipes[i].recipe_id
-      )})'  data-id =${Recipes[i].recipe_id} data-title=${
-      Recipes[i].title
-    } data-image=${
-      Recipes[i].image_url
-    } class="btn  bg-danger-subtle ms-3 rounded-5  position-absolute top-0 start-0 mt-3">
-      <i class="fa-regular d-block fa-heart p-2"></i>
+      )})'   class="btn  bg-danger-subtle ms-3 rounded-5   position-absolute top-0 start-0 mt-3">
+      <i  class="fa-regular  d-block fa-heart loveICon p-2"></i>
     </button>
         <img
           src=${Recipes[i].image_url}
@@ -135,6 +132,7 @@ function displayRecipes(Recipes) {
     `;
   }
   recipesMenu.innerHTML = cols;
+  console.log(loveICon);
 }
 
 function fullyload() {
@@ -324,7 +322,7 @@ function addToFav(id) {
   for (let i = 0; i < favRecipesList.length; i++) {
     col += `
   
-    <div class="col-12">
+    <div class="col-12 mb-3">
     <div class="card h-100 border-0 shadow rounded-4 border-0">
       <div
         class="popCardImg bg-danger-subtle p-2 d-flex justify-content-center align-items-center rounded-4 position-relative"
