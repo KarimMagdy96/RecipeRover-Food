@@ -12,7 +12,7 @@ let loginText = document.querySelector(".login-text");
 let reguser = document.querySelector(".reguser");
 let likebtn = document.querySelectorAll(".likebtn");
 let lovedRecipes = document.querySelector(".lovedRecipes");
-let loveICon = document.querySelector(".loveICon");
+
 let regmail = document.querySelector(".regmail");
 let logerrorMsg = document.querySelector(".logerrorMsg");
 let logmail = document.querySelector(".logmail");
@@ -25,6 +25,7 @@ let RegisterBtn = document.querySelector(".RegisterBtn");
 let regpass = document.querySelector(".regpass");
 let userIcon = document.getElementById("userIcon");
 let logbtn = document.querySelector(".logbtn");
+let loveICon = document.querySelector(".loveICon");
 let pwFields = document.querySelectorAll(".password");
 let detailsDialoge = document.getElementById("detailsDialoge");
 let details = Array.from(document.getElementsByClassName("details"));
@@ -99,7 +100,8 @@ function displayRecipes(Recipes) {
       <button onclick='addToFav(${JSON.stringify(
         Recipes[i].recipe_id
       )})'   class="btn  bg-danger-subtle ms-3 rounded-5   position-absolute top-0 start-0 mt-3">
-      <i  class="fa-regular  d-block fa-heart loveICon p-2"></i>
+      <i   class="fa-regular text-danger  d-block fa-heart loveICon p-2"></i>
+      
     </button>
         <img
           src=${Recipes[i].image_url}
@@ -132,20 +134,13 @@ function displayRecipes(Recipes) {
     `;
   }
   recipesMenu.innerHTML = cols;
+  console.log(loveICon);
 }
 
 function fullyload() {
   loadscreen.classList.add("d-none");
   bodyVisable.classList.remove("overflow-hidden");
 }
-
-// sign up
-
-//user validation
-
-//  sign up
-
-//rest fORM FOR LOGIN
 
 //get recipes details
 async function getRecipesDetails(id) {
