@@ -11,6 +11,7 @@ let signUp = document.querySelector(".signup-text");
 let loginText = document.querySelector(".login-text");
 let reguser = document.querySelector(".reguser");
 let regmail = document.querySelector(".regmail");
+let logerrorMsg = document.querySelector(".logerrorMsg");
 let logmail = document.querySelector(".logmail");
 let logMsg = document.querySelector(".logMsg");
 let logpass = document.querySelector(".logpass");
@@ -76,6 +77,7 @@ async function getRecipes(category) {
   );
   let Recipes = await response.json();
   Recipeslist = Recipes.recipes;
+  console.log(Recipeslist);
   fullyload();
 }
 // display recipes
@@ -169,7 +171,7 @@ async function getRecipesDetails(id) {
     })}
         
       </div>
-      <div class="publcher  ">
+      <div class="publisher">
         <p class="d-flex  justify-content-start mt-5 align-items-center fw-bold"><span class=" fw-bold"></span> <a href="${
           foodData.recipe.source_url
         }" class="btn btn-outline-danger rounded-4  recipesSourse" target='_blank'
@@ -262,8 +264,9 @@ RegisterBtn.addEventListener("click", function () {
     };
     users.push(user);
     localStorage.setItem("allusers", JSON.stringify(users));
+
     sucseesMsg.innerHTML = `
-    👋 ${reguser.value}, your account is created Sussfully , go to login now !!
+    👋 ${reguser.value}, your account is Ready , go to login now !!
     `;
     sucseesMsg.classList.remove("d-none");
     reguser.value = "";
@@ -275,15 +278,18 @@ console.log(users);
 
 //loginuser
 logbtn.addEventListener("click", function () {
-  console.log(users, logmail, logpass);
   for (let i = 0; i < users.length; i++) {
     if (users[i].email == logmail.value && users[i].password == logpass.value) {
       logMsg.innerHTML = `
-      👋 you are logged in Sussfully !!
+      👋 you are logged in successfully !!
       `;
       logMsg.classList.remove("d-none");
+      logerrorMsg.classList.add("d-none");
       logmail.value = "";
       logpass.value = "";
+    } else {
+      logerrorMsg.innerHTML = ` Wrong Password or Email !`;
+      logerrorMsg.classList.remove("d-none");
     }
   }
 });
