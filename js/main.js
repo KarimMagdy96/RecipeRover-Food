@@ -10,6 +10,9 @@ let sowHidePw = document.querySelectorAll(".sowHidePw");
 let signUp = document.querySelector(".signup-text");
 let loginText = document.querySelector(".login-text");
 let reguser = document.querySelector(".reguser");
+let likebtn = document.querySelectorAll(".likebtn");
+let lovedRecipes = document.querySelector(".lovedRecipes");
+let test = document.querySelector(".test");
 let regmail = document.querySelector(".regmail");
 let logerrorMsg = document.querySelector(".logerrorMsg");
 let logmail = document.querySelector(".logmail");
@@ -80,6 +83,7 @@ async function getRecipes(category) {
   console.log(Recipeslist);
   fullyload();
 }
+
 // display recipes
 function displayRecipes(Recipes) {
   let cols = ``;
@@ -91,23 +95,35 @@ function displayRecipes(Recipes) {
       <div
         class="popCardImg bg-danger-subtle p-2 d-flex justify-content-center align-items-center rounded-4 position-relative"
       >
-      <button class="btn  bg-danger-subtle ms-3 rounded-5 likebtn   position-absolute top-0 start-0 mt-3">
+      <button onclick='addToFav(${JSON.stringify(
+        Recipes[i].recipe_id
+      )})'  data-id =${Recipes[i].recipe_id} data-title=${
+      Recipes[i].title
+    } data-image=${
+      Recipes[i].image_url
+    } class="btn  bg-danger-subtle ms-3 rounded-5  position-absolute top-0 start-0 mt-3">
       <i class="fa-regular d-block fa-heart p-2"></i>
     </button>
         <img
           src=${Recipes[i].image_url}
           class="card-img-top  w-100 rounded-3 recipesImg "
-          alt="..."
+          alt=${Recipes[i].title}
         />
       </div>
       <div class="card-body">
-        <h5 class="card-title fs-6 fw-semibold  text-center fw-bold recipesTitle">${Recipes[i].title}</h5>
+        <h5 class="card-title fs-6 fw-semibold  text-center fw-bold recipesTitle">${
+          Recipes[i].title
+        }</h5>
         <div class="cardAction  ">
            <div class="d-flex justify-content-between flex-column flex-lg-row  align-items-center">
-           <button onclick='getRecipesDetails(${Recipes[i].recipe_id})' class="details  w-100 d-block me-lg-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+           <button onclick='getRecipesDetails(${
+             Recipes[i].recipe_id
+           })' class="details  w-100 d-block me-lg-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Details <i class="fa-solid fa-book-open-reader"></i>
           </button>
-            <a href=${Recipes[i].source_url} class="btn btn-outline-danger  border-2 rounded-5 w-100 mb-2 recipesSourse" target='_blank'
+            <a href=${
+              Recipes[i].source_url
+            } class="btn btn-outline-danger  border-2 rounded-5 w-100 mb-2 recipesSourse" target='_blank'
             >Source<i class="fa-solid fa-share ms-2 fa-sm"></i
           ></a>
           </div>
@@ -297,4 +313,50 @@ logbtn.addEventListener("click", function () {
   }
 });
 
-//
+//add loved recipes to recipes cart
+function addToFav(id) {
+  for (let i = 0; i < Recipeslist.length; i++) {
+    if (Recipeslist[i].recipe_id == id) {
+      col = ``;
+    }
+  }
+}
+/*
+  let id = likebtn[i].getAttribute("data-id");
+    let title = likebtn[i].getAttribute("data-title");
+    let image = likebtn[i].getAttribute("data-image");
+    lovedRecipes.innerHTML = `
+    <div class="col">
+    <div class="card h-100 border-0 shadow rounded-4 border-0">
+      <div
+        class="popCardImg bg-danger-subtle p-2 d-flex justify-content-center align-items-center rounded-4 position-relative"
+      >
+      <button data-id = data-title= data-image= class="btn  bg-danger-subtle ms-3 rounded-5 likebtn   position-absolute top-0 start-0 mt-3">
+      <i class="fa-regular d-block fa-heart p-2"></i>
+    </button>
+        <img
+          src=
+          class="card-img-top  w-100 rounded-3 recipesImg "
+          alt=
+        />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title fs-6 fw-semibold  text-center fw-bold recipesTitle"></h5>
+        <div class="cardAction  ">
+           <div class="d-flex justify-content-between flex-column flex-lg-row  align-items-center">
+           <button onclick='getRecipesDetails()' class="details  w-100 d-block me-lg-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Details <i class="fa-solid fa-book-open-reader"></i>
+          </button>
+            <a href= class="btn btn-outline-danger  border-2 rounded-5 w-100 mb-2 recipesSourse" target='_blank'
+            >Source<i class="fa-solid fa-share ms-2 fa-sm"></i
+          ></a>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+    `;
+    alert("add to loved recipes");
+
+*/

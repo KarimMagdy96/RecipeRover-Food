@@ -680,9 +680,41 @@
     <img src="img/logo light.webp" alt="" class="w-25">
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-  <div class="offcanvas-body">
-   
+  <div class="container">
+  <div class=" row lovedRecipes ">
+    <div class="col">
+      <div class="card h-100 border-0 shadow rounded-4 border-0">
+        <div
+          class="popCardImg bg-danger-subtle p-2 d-flex justify-content-center align-items-center rounded-4 position-relative"
+        >
+      
+          <img
+            src='img/Ground-Beef-Soft-Taco.jpg'
+            class="card-img-top  w-100 rounded-3 recipesImg "
+            alt=${Recipes[i].title}
+          />
+        </div>
+        <div class="card-body">
+          <h5 class="card-title fs-6 fw-semibold  text-center fw-bold recipesTitle">test
+          </h5>
+          <div class="cardAction  ">
+             <div class="d-flex justify-content-between flex-column flex-lg-row  align-items-center">
+             <button  class="details  w-100 d-block me-lg-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Details <i class="fa-solid fa-book-open-reader"></i>
+            </button>
+              <a href=${
+                Recipes[i].source_url
+              } class="btn btn-outline-danger  border-2 rounded-5 w-100 mb-2 recipesSourse" target='_blank'
+              >Source<i class="fa-solid fa-share ms-2 fa-sm"></i
+            ></a>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 </div>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
