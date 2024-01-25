@@ -324,7 +324,7 @@ function addToFav(id) {
   for (let i = 0; i < favRecipesList.length; i++) {
     col += `
   
-    <div class="col mb-3">
+    <div class="col-12">
     <div class="card h-100 border-0 shadow rounded-4 border-0">
       <div
         class="popCardImg bg-danger-subtle p-2 d-flex justify-content-center align-items-center rounded-4 position-relative"
