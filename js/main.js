@@ -99,7 +99,7 @@ function displayRecipes(Recipes) {
       >
       <button onclick='addToFav(${JSON.stringify(
         Recipes[i].recipe_id
-      )})'   class="btn  bg-danger-subtle ms-3 rounded-5   position-absolute top-0 start-0 mt-3">
+      )})'   class="btn  bg-danger-subtle me-3 rounded-5   position-absolute top-0 end-0 mt-3">
       <i   class="fa-regular text-danger  d-block fa-heart loveICon p-2"></i>
       
     </button>
