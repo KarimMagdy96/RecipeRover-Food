@@ -10,7 +10,7 @@
 
 <img src="https://i.imgur.com/AvCcnLJ.png" alt="project-screenshot" width="1200">
 
-<img src="https://i.imgur.com/ToTJlqv.png" alt="project-screenshot" width="1200">
+<img src="https://i.imgur.com/66Fafno.png" alt="project-screenshot" width="1200">
 
 <img src="https://i.imgur.com/B4QU5Ug.png" alt="project-screenshot" width="1200">
 
