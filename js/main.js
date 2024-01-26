@@ -18,6 +18,7 @@ let logmail = document.querySelector(".logmail");
 let logMsg = document.querySelector(".logMsg");
 let logpass = document.querySelector(".logpass");
 let badge = document.querySelector(".badge");
+let search = document.getElementById("search");
 let loguser = document.querySelector(".loguser");
 let sucseesMsg = document.querySelector(".sucseesMsg");
 let RegisterBtn = document.querySelector(".RegisterBtn");
@@ -82,7 +83,6 @@ async function getRecipes(category) {
   );
   let Recipes = await response.json();
   Recipeslist = Recipes.recipes;
-  console.log(Recipeslist);
   fullyload();
 }
 
@@ -133,7 +133,6 @@ function displayRecipes(Recipes) {
     `;
   }
   recipesMenu.innerHTML = cols;
-  console.log(loveICon);
 }
 
 function fullyload() {
@@ -410,3 +409,58 @@ function removeFav(id) {
   displayFavRecipes();
 }
 badge.innerHTML = favRecipesList.length;
+
+// search recipes
+
+search.addEventListener("keyup", function () {
+  let cols = ``;
+  for (let i = 0; i < Recipeslist.length; i++) {
+    if (
+      Recipeslist[i].title.toLowerCase().includes(search.value.toLowerCase())
+    ) {
+      cols += `
+    <div class="col">
+    <div class="card h-100 border-0 shadow rounded-4 border-0">
+      <div
+        class="popCardImg bg-danger-subtle p-2 d-flex justify-content-center align-items-center rounded-4 position-relative"
+      >
+      <button onclick='addToFav(${JSON.stringify(
+        Recipeslist[i].recipe_id
+      )})'   class="btn  bg-danger-subtle me-3 rounded-5   position-absolute top-0 end-0 mt-3">
+      <i   class="fa-regular text-danger  d-block fa-heart loveICon p-2"></i>
+      
+    </button>
+        <img
+          src=${Recipeslist[i].image_url}
+          class="card-img-top  w-100 rounded-3 recipesImg "
+          alt=${Recipeslist[i].title}
+        />
+      </div>
+      <div class="card-body">
+        <h5 class="card-title fs-6 fw-semibold  text-center fw-bold recipesTitle">${
+          Recipeslist[i].title
+        }</h5>
+        <div class="cardAction  ">
+           <div class="d-flex justify-content-between flex-column flex-lg-row  align-items-center">
+           <button onclick='getRecipesDetails(${
+             Recipeslist[i].recipe_id
+           })' class="details  w-100 d-block me-lg-2 btn btn-outline-danger rounded-5 border-2 mb-2 recipesDetailsBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Details <i class="fa-solid fa-book-open-reader"></i>
+          </button>
+            <a href=${
+              Recipeslist[i].source_url
+            } class="btn btn-outline-danger  border-2 rounded-5 w-100 mb-2 recipesSourse" target='_blank'
+            >Source<i class="fa-solid fa-share ms-2 fa-sm"></i
+          ></a>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+    `;
+    }
+  }
+  recipesMenu.innerHTML = cols;
+  console.log(cols);
+});
