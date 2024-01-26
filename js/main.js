@@ -12,7 +12,6 @@ let loginText = document.querySelector(".login-text");
 let reguser = document.querySelector(".reguser");
 let likebtn = document.querySelectorAll(".likebtn");
 let lovedRecipes = document.querySelector(".lovedRecipes");
-
 let regmail = document.querySelector(".regmail");
 let logerrorMsg = document.querySelector(".logerrorMsg");
 let logmail = document.querySelector(".logmail");
