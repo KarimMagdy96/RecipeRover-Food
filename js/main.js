@@ -157,7 +157,7 @@ async function getRecipesDetails(id) {
     <div class="modelImg  col-lg-6 col-12">
       <img src="${
         foodData.recipe.image_url
-      }" class=" img-fluid detilasImg rounded-4" alt="">
+      }" class=" img-fluid detilasImg rounded-4" alt=${foodData.recipe.title}>
     </div>
     <div class="col-lg-6 col-12">
       <h4 class=" mb-4 fw-bold mt-3 mt-md-0 ">${foodData.recipe.title}</h4>
@@ -360,7 +360,7 @@ function displayFavRecipes() {
         <img
           src=${favRecipesList[i].image_url}
           class="card-img-top  w-100 rounded-3 recipesImg "
-          alt=''
+          alt=${favRecipesList[i].title}
         />
       </div>
       <div class="card-body">
@@ -453,7 +453,6 @@ search.addEventListener("keyup", function () {
             >Source<i class="fa-solid fa-share ms-2 fa-sm"></i
           ></a>
           </div>
-         
         </div>
       </div>
     </div>
