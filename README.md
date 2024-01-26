@@ -1,4 +1,4 @@
-<p align="center"><img src="https://i.imgur.com/BrOR1tk.png" alt="project-image"></p>
+<p align="center"><img src="https://i.imgur.com/YMRwQj9.png" alt="project-image"></p>
 
 <p id="description">RecipeRover Food Website Provides seamless intertwines coding prowess with the magic of culinary exploration. With smart search, secure authentication, and a personalized favorites list, embark on a flavorful journey where code elevates the art of cooking!</p>
 
