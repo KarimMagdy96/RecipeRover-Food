@@ -6,6 +6,14 @@
 body {
   font-family: "Nunito", sans-serif;
 }
+.popular,
+.about,
+.Recipes,
+.FAQs,
+footer {
+  margin-top: 150px;
+}
+
 .navbar-toggler {
   border: none !important;
   padding: 0 !important;
@@ -25,21 +33,13 @@ body {
   font-size: 1.1rem !important;
   font-weight: 700 !important;
 }
-.carousel-item {
-}
 .Home {
   margin-top: 7rem;
 }
 .caroselImg {
   max-width: 40rem;
 }
-.popular,
-.about,
-.Recipes,
-.FAQs,
-footer {
-  margin-top: 150px;
-}
+
 .accordion-item {
   border: none !important;
 }
@@ -194,7 +194,13 @@ footer {
 .form .login_signup a {
   text-decoration: none;
 }
-/* HTML: <div class="loader"></div> */
+
+.loveICon:first-child:active {
+  transform: scale(0.7);
+}
+.loveICon:first-child:active i {
+  transform: scale(2.7);
+}
 .loadscreen {
   z-index: 9999;
 }
@@ -203,7 +209,7 @@ footer {
   width: 120px;
   height: 14px;
   border-radius: 0 0 15px 15px;
-  background-color: #3e494d;
+  background-color: #334044;
   box-shadow: 0 -1px 4px #5d6063 inset;
   animation: panex 0.5s linear alternate infinite;
   transform-origin: 170px 0;

@@ -98,8 +98,8 @@ function displayRecipes(Recipes) {
       >
       <button onclick='addToFav(${JSON.stringify(
         Recipes[i].recipe_id
-      )})'   class="btn  bg-danger-subtle me-3 rounded-5   position-absolute top-0 end-0 mt-3">
-      <i   class="fa-regular text-danger  d-block fa-heart loveICon p-2"></i>
+      )})'   class="btn  bg-danger-subtle me-3 rounded-5 loveICon  position-absolute top-0 end-0 mt-3">
+      <i   class="fa-regular text-danger  d-block fa-heart  p-2"></i>
       
     </button>
         <img
@@ -339,8 +339,11 @@ function addToFav(id) {
   for (let i = 0; i < Recipeslist.length; i++) {
     if (Recipeslist[i].recipe_id == id) {
       favRecipesList.push(Recipeslist[i]);
+      let unicFavRecipes = new Set(favRecipesList);
+      favRecipesList = [...unicFavRecipes];
     }
   }
+
   localStorage.setItem("favRecipes", JSON.stringify(favRecipesList));
   localStorage.setItem(currentUser, JSON.stringify(favRecipesList));
   displayFavRecipes();
