@@ -197,9 +197,11 @@ footer {
 
 .loveICon:first-child:active {
   transform: scale(0.7);
+  -webkit-transform: scale(0.7);
 }
 .loveICon:first-child:active i {
   transform: scale(2.7);
+  -webkit-transform: scale(2.7);
 }
 .loadscreen {
   z-index: 9999;
